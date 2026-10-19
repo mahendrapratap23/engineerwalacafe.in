@@ -538,18 +538,19 @@ footer {
 
   .editorial-portrait-col {
     padding-left: 0;
-    min-height: 400px;
+    min-height: 360px;
     align-items: flex-end;
-    order: 2; /* Content first on mobile for optimal reading flow */
+    order: 1; /* Founder pic first on mobile */
+    padding-top: 24px;
   }
 
   .editorial-content {
-    padding: 36px 28px 24px;
-    order: 1;
+    padding: 24px 28px 36px;
+    order: 2; /* Founder says text follows */
   }
 
   .founder-cutout {
-    max-height: 440px;
+    max-height: 380px;
   }
 
   .foot {
@@ -730,13 +731,12 @@ footer {
           <div class="portrait-wrapper">
             <img
               id="founder-portrait"
-              src="assets/founder-cutout.png"
+              src="assets/Screenshot_2026-10-19_at_21.57.38-removebg-preview.png"
               alt="Portrait of Mahendra Pratap, founder of Engineer Wala Cafe"
               class="founder-cutout"
-              width="407"
-              height="612"
-              loading="eager"
-              onerror="this.src='assets/founder.jpg';">
+              width="500"
+              height="470"
+              loading="eager">
             <div class="brand-watermark" aria-hidden="true">ENGINEER WALA CAFE</div>
           </div>
         </div>
