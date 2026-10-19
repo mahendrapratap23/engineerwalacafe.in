@@ -81,6 +81,15 @@ p{margin:0}
 .hero h1 em{font-style:normal;color:var(--amber)}
 .hero .lead{max-width:48ch;margin-bottom:34px;font-size:clamp(17px,2vw,21px);color:rgba(244,236,221,.92)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-qr-wrap{margin-top:22px}
+.hero-qr-badge{display:inline-flex;align-items:center;gap:16px;padding:12px 18px 12px 12px;background:rgba(20,18,16,.75);backdrop-filter:blur(14px);border:1px solid rgba(244,236,221,.25);border-radius:18px;color:#FAF7F2;text-decoration:none;transition:transform .2s ease,background .2s ease,border-color .2s ease;max-width:440px}
+.hero-qr-badge:hover{transform:translateY(-2px);background:rgba(20,18,16,.9);border-color:var(--amber)}
+.hero-qr-badge img{width:80px;height:98px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.2);flex-shrink:0;background:#fff}
+.hero-qr-info{display:flex;flex-direction:column;gap:4px}
+.hero-qr-tag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.hero-qr-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:#25D366}
+.hero-qr-title{font-size:15px;font-weight:700;line-height:1.2;color:#FAF7F2}
+.hero-qr-sub{font-size:13px;color:rgba(244,236,221,.75);line-height:1.3}
 .status{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(244,236,221,.35);border-radius:999px;padding:8px 16px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .status i{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(233,162,59,.25)}
 .render-note{position:absolute;left:20px;right:20px;bottom:14px;text-align:right;font-size:12px;opacity:.7;font-family:'Space Mono',monospace}
@@ -188,7 +197,7 @@ footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,1
         <li><a href="#where">Kahan khule?</a></li>
       </ul>
     </nav>
-    <a class="btn small whatsapp" href="https://chat.whatsapp.com/YOUR_COMMUNITY_LINK" target="_blank" rel="noopener">☕ Community Join Karo</a>
+    <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">☕ Community Join Karo</a>
   </div>
 </header>
 
@@ -201,13 +210,23 @@ footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,1
     <h1 id="hero-title">Chai peeyo.<br>Draw karo.<br><em>Build karo.</em></h1>
     <p class="lead">Gorakhpur ka pehla cafe jahan har table ek whiteboard hai. Engineers, creators aur founders ke liye: kadak kulhad chai, fast WiFi aur aisi seat jahan 4 ghante baithna thakata nahi.</p>
     <div class="hero-cta">
-      <a class="btn whatsapp" href="https://chat.whatsapp.com/YOUR_COMMUNITY_LINK" target="_blank" rel="noopener">
+      <a class="btn whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Community Join Karo
       </a>
       <a class="btn instagram" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
         Instagram pe follow karo
+      </a>
+    </div>
+    <div class="hero-qr-wrap">
+      <a href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" class="hero-qr-badge" target="_blank" rel="noopener" title="Scan with phone camera or click to join WhatsApp Community">
+        <img src="assets/whatsapp-community-qr.jpg" alt="WhatsApp Community QR code" width="80" height="98">
+        <div class="hero-qr-info">
+          <span class="hero-qr-tag">Scan &amp; Join</span>
+          <span class="hero-qr-title">Direct phone se scan karo</span>
+          <span class="hero-qr-sub">Camera se scan karo ya click karke judo &rarr;</span>
+        </div>
       </a>
     </div>
   </div>
@@ -362,6 +381,16 @@ footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,1
       <div>
         <h2>Chai ke sath <span>banate hai sab.</span></h2>
         <p>Gorakhpur, Uttar Pradesh. Abhi hum validation stage mein hain: aapka vote humein sahi jagah chunne mein madad karta hai.</p>
+        <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+          <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Community Join Karo
+          </a>
+          <a class="btn small instagram" style="color:var(--ink);border-color:rgba(20,18,16,.25)" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
       </div>
     </div>
     <div class="copy"><span>&copy; Engineer Wala Cafe</span><span>@engineerwalacafe &middot; engineerwalacafe.in</span></div>
