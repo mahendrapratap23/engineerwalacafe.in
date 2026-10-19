@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400" width="800" height="800" role="img" aria-label="engineerwalacafe round badge">
+  <style><![CDATA[
+    @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+    .badge-text { font-family: 'Alfa Slab One', serif; fill: #F4ECDD; }
+  ]]></style>
+  <defs>
+    <path id="badgeTop" d="M88,200 A112,112 0 0 1 312,200"/>
+    <path id="badgeBottom" d="M67,200 A133,133 0 0 0 333,200"/>
+  </defs>
+  <circle cx="200" cy="200" r="176" fill="none" stroke="#141210" stroke-width="22" stroke-dasharray="15.36 15.36"/>
+  <circle cx="200" cy="200" r="166" fill="#141210"/>
+  <circle cx="200" cy="200" r="142" fill="none" stroke="#E9A23B" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="104" fill="none" stroke="#E9A23B" stroke-width="1.5"/>
+  <text class="badge-text" font-size="22" letter-spacing="2">
+    <textPath href="#badgeTop" xlink:href="#badgeTop" startOffset="50%" text-anchor="middle">ENGINEERWALA CAFE</textPath>
+  </text>
+  <text class="badge-text" font-size="15" letter-spacing="2">
+    <textPath href="#badgeBottom" xlink:href="#badgeBottom" startOffset="50%" text-anchor="middle">BUILD · BREW · REPEAT</textPath>
+  </text>
+  <circle cx="77" cy="200" r="4" fill="#E9A23B"/>
+  <circle cx="323" cy="200" r="4" fill="#E9A23B"/>
+  <g transform="translate(0 8)">
+    <g fill="none" stroke="#F4ECDD" stroke-width="5" stroke-linecap="round">
+      <path d="M184 156 q-8 -11 0 -22 q8 -11 0 -22"/>
+      <path d="M216 156 q8 -11 0 -22 q-8 -11 0 -22"/>
+    </g>
+    <path d="M156 172 H244 L232 252 Q230 264 218 264 H182 Q170 264 168 252 Z" fill="#E9A23B"/>
+    <rect x="150" y="166" width="100" height="10" rx="5" fill="#E9A23B"/>
+    <circle cx="200" cy="214" r="9" fill="#141210"/>
+    <circle cx="200" cy="214" r="14" fill="none" stroke="#141210" stroke-width="6" stroke-dasharray="4.4 4.4"/>
+    <circle cx="200" cy="214" r="3.5" fill="#E9A23B"/>
+  </g>
+</svg>
