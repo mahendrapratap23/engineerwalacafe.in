@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meet the Founder | Engineer Wala Cafe</title>
-<meta name="description" content="Meet Mahendra Pratap, founder of Engineer Wala Cafe in Gorakhpur: a calm place to work with fast internet, charging at every seat, good food and a community of builders.">
+<meta name="description" content="Meet Mahendra Pratap, founder of Engineer Wala Cafe in Gorakhpur — building the cafe for people who actually work.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Meet the Founder | Engineer Wala Cafe">
-<meta property="og:description" content="Meet Mahendra Pratap, founder of Engineer Wala Cafe in Gorakhpur: a calm place to work with fast internet, charging at every seat, good food and a community of builders.">
+<meta property="og:description" content="Meet Mahendra Pratap, founder of Engineer Wala Cafe in Gorakhpur — building the cafe for people who actually work.">
 <meta property="og:image" content="assets/engineerwalacafe-badge-transparent.svg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,183 +15,298 @@
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#141210;--ink-2:#2B2723;--ink-soft:#544F49;
-  --paper:#FAF7F2;--paper-2:#F0EAE1;
-  --amber:#E9A23B;--amber-deep:#C87A1E;
-  --brick:#9C4326;--blue:#2457C5;--red:#C8402B;--green:#2E7D4F;
-  --radius:18px;
+  --ink:#141210;
+  --ink-2:#2B2723;
+  --ink-soft:#544F49;
+  --paper:#FAF7F2;
+  --paper-2:#F0EAE1;
+  --amber:#E9A23B;
+  --amber-deep:#C87A1E;
+  --radius:20px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden;width:100%}
+body{
+  margin:0;
+  font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:17px;
+  overflow-x:hidden;
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;line-height:1.08;margin:0}
-h2{font-size:clamp(30px,4.6vw,52px)}
-h3{font-size:22px}
+h1,h2,h3{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;line-height:1.1;margin:0}
 p{margin:0}
 .container{width:min(1180px,100% - 48px);margin-inline:auto}
-.mono{font-family:'Space Mono',ui-monospace,monospace}
-.eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-deep);font-weight:700}
-.section{padding:96px 0}
-.dark{background:var(--ink);color:var(--paper)}
-.alt{background:var(--paper-2)}
-.lead{font-size:19px;max-width:60ch;color:var(--ink-soft)}
+.mono{font-family:'Space Mono',monospace}
 :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.desktop-only{display:inline}
-.mobile-only{display:none}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 16px/1 'DM Sans',sans-serif;padding:16px 26px;border-radius:999px;border:2px solid var(--amber);background:var(--amber);color:var(--ink);cursor:pointer;text-decoration:none;min-height:48px;transition:transform .15s ease,background .15s ease}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font:700 16px/1 'DM Sans',sans-serif;
+  padding:15px 24px;
+  border-radius:999px;
+  border:2px solid var(--amber);
+  background:var(--amber);
+  color:var(--ink);
+  cursor:pointer;
+  text-decoration:none;
+  min-height:48px;
+  transition:transform .15s ease,background .15s ease;
+}
 .btn:hover{transform:translateY(-2px);background:#f3b653}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn.ghost:hover{background:rgba(20,18,16,.06)}
-.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;pointer-events:none}
-.btn.small{padding:11px 18px;font-size:14px;min-height:44px;white-space:nowrap}
-.btn.whatsapp{background:#25D366;border-color:#25D366;color:#fff;font-size:17px;padding:18px 30px}
+.btn.small{padding:10px 18px;font-size:14px;min-height:44px;white-space:nowrap}
+.btn.whatsapp{background:#25D366;border-color:#25D366;color:#fff}
 .btn.whatsapp:hover{background:#1ebe5d;transform:translateY(-2px)}
 .btn.linkedin{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .btn.linkedin:hover{background:var(--ink-2);transform:translateY(-2px)}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none!important;pointer-events:none}
 
 /* Nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);color:var(--ink);border-bottom:1px solid rgba(20,18,16,.08);width:100%}
-.nav .container{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px}
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(250,247,242,.94);
+  backdrop-filter:blur(12px);
+  color:var(--ink);
+  border-bottom:1px solid rgba(20,18,16,.08);
+  width:100%;
+}
+.nav .container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:68px;
+}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .brand img{flex-shrink:0;border-radius:50%;display:block;transition:transform .25s ease}
 .brand:hover img{transform:rotate(8deg) scale(1.06)}
 .brand-name{font-family:'Alfa Slab One',serif;font-size:19px;letter-spacing:.01em;color:var(--ink);white-space:nowrap}
 .brand-name span{color:var(--amber-deep)}
-.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
-.nav ul a{text-decoration:none;color:var(--ink);opacity:.8}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--ink);opacity:.8;transition:color .15s ease,opacity .15s ease}
 .nav ul a:hover{opacity:1;color:var(--amber-deep)}
 .nav ul a[aria-current="page"]{opacity:1;color:var(--amber-deep);border-bottom:2px solid var(--amber-deep);padding-bottom:2px}
-.nav-btn{flex-shrink:0}
+.desktop-only{display:inline}
+.mobile-only{display:none}
 @media(max-width:860px){.nav ul{display:none}}
 
 /* Back link */
-.back-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;font-family:'Space Mono',monospace;text-decoration:none;color:var(--amber-deep);letter-spacing:.04em;padding:8px 0;border-bottom:2px solid transparent;transition:border-color .15s ease}
-.back-link:hover{border-bottom-color:var(--amber-deep)}
-.back-link svg{flex:none;transition:transform .15s ease}
-.back-link:hover svg{transform:translateX(-3px)}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:700;
+  font-family:'Space Mono',monospace;
+  text-decoration:none;
+  color:var(--amber-deep);
+  letter-spacing:.03em;
+  padding:10px 0;
+  min-height:44px;
+  transition:transform .15s ease;
+}
+.back-link:hover{transform:translateX(-3px)}
 
-/* Founder Hero */
-.founder-hero{padding:72px 0 80px}
-.founder-hero-inner{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;margin-top:36px}
-.founder-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;border:4px solid var(--amber);box-shadow:0 24px 60px rgba(20,18,16,.16);display:block}
-.founder-monogram{width:100%;aspect-ratio:4/5;border-radius:24px;border:4px solid var(--amber);background:var(--amber);display:none;align-items:center;justify-content:center;box-shadow:0 24px 60px rgba(20,18,16,.16)}
-.founder-monogram span{font-family:'Alfa Slab One',serif;font-size:clamp(64px,10vw,96px);color:var(--ink);line-height:1}
-.founder-hero-content{padding-top:12px}
-.founder-meta-line{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;font-size:15px;color:var(--ink-soft);font-family:'Space Mono',monospace}
-.meta-dot{width:5px;height:5px;border-radius:50%;background:var(--ink-soft);flex-shrink:0}
-.founder-intro{font-size:20px;line-height:1.6;color:var(--ink);margin:22px 0 0;max-width:52ch;font-style:italic;border-left:3px solid var(--amber);padding-left:18px}
-.founder-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
-@media(max-width:860px){.founder-hero-inner{grid-template-columns:1fr;gap:40px}.founder-photo,.founder-monogram{max-width:300px;margin:0 auto}}
-@media(max-width:640px){.founder-hero{padding:40px 0 56px}.founder-intro{font-size:17px}.founder-btns{flex-direction:column}.founder-btns .btn{width:100%;justify-content:center}}
+/* Main section */
+main{flex:1;padding:48px 0 88px}
+.founder-card{
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid rgba(20,18,16,.08);
+  box-shadow:0 12px 36px rgba(20,18,16,.06);
+  padding:56px;
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:56px;
+  align-items:start;
+}
 
-/* Story */
-.story-body{display:grid;gap:20px;max-width:68ch;margin-top:36px}
-.story-body p{font-size:18px;line-height:1.75;color:var(--ink)}
-.pull-quote{font-family:'Alfa Slab One',serif;font-size:clamp(22px,3.5vw,34px);line-height:1.2;color:var(--amber-deep);margin-top:44px;max-width:22ch}
-.story-closing{font-size:15px;color:var(--ink-soft);font-style:italic;margin-top:16px;font-family:'Space Mono',monospace}
+/* Photo & Monogram */
+.photo-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  border-radius:18px;
+  overflow:hidden;
+  border:4px solid var(--amber);
+  box-shadow:0 16px 40px rgba(20,18,16,.12);
+  background:var(--paper-2);
+}
+.founder-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.founder-monogram{
+  display:none;
+  width:100%;
+  height:100%;
+  background:var(--amber);
+  align-items:center;
+  justify-content:center;
+}
+.founder-monogram span{
+  font-family:'Alfa Slab One',serif;
+  font-size:clamp(64px,9vw,96px);
+  color:var(--ink);
+  line-height:1;
+}
 
-/* Problems */
-.problem-list{display:grid;gap:14px;margin-top:38px;max-width:680px}
-.problem-row{display:flex;align-items:center;gap:18px;padding:18px 20px;background:#fff;border-radius:var(--radius);border:1px solid rgba(20,18,16,.08);box-shadow:0 4px 14px rgba(20,18,16,.03)}
-.problem-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--paper-2);display:flex;align-items:center;justify-content:center}
-.problem-text{font-size:16.5px;font-weight:500;color:var(--ink)}
+/* Founder Details */
+.founder-info{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.founder-name{
+  font-size:clamp(36px,5vw,56px);
+  color:var(--ink);
+}
+.founder-subline{
+  font-family:'Space Mono',monospace;
+  font-size:17px;
+  font-weight:700;
+  color:var(--amber-deep);
+  letter-spacing:.02em;
+}
+.founder-text{
+  font-size:19px;
+  line-height:1.75;
+  color:var(--ink-2);
+  max-width:54ch;
+  margin-top:4px;
+}
+.founder-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:10px;
+}
 
-/* Feature cards */
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}
-@media(max-width:900px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.feature-grid{grid-template-columns:1fr}}
-.feature-card{background:#fff;border-radius:var(--radius);padding:26px 24px;border:1px solid rgba(20,18,16,.08);box-shadow:0 6px 18px rgba(20,18,16,.04);display:flex;flex-direction:column;gap:10px}
-.feature-tag{display:inline-flex;align-items:center;gap:5px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-deep);border:1px solid var(--amber);border-radius:999px;padding:4px 10px;width:fit-content}
-.feature-card h3{font-size:18px;margin-top:4px}
-.feature-card p{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
-
-/* Audience chips */
-.chip-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.chip{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;padding:10px 18px;border-radius:999px;border:2px solid var(--amber-deep);color:var(--amber-deep);background:transparent;white-space:nowrap}
-
-/* Status table */
-.status-box{background:#fff;border:1px solid rgba(20,18,16,.1);border-radius:var(--radius);padding:28px 32px;margin-top:38px;box-shadow:0 6px 18px rgba(20,18,16,.04);max-width:700px}
-.status-row{display:grid;grid-template-columns:190px 1fr;gap:8px 20px;padding:14px 0;border-bottom:1px solid rgba(20,18,16,.08);align-items:baseline}
-.status-row:last-child{border-bottom:0;padding-bottom:0}
-.status-row:first-child{padding-top:0}
-.status-label{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
-.status-value{font-size:15.5px;color:var(--ink)}
-@media(max-width:560px){.status-box{padding:20px 18px}.status-row{grid-template-columns:1fr;gap:3px}.status-label{font-size:11px}}
-
-/* Timeline */
-/* To change state: update class on .tl-item to: done | in-progress | pending */
-.timeline{display:grid;gap:0;margin-top:38px;max-width:520px}
-.tl-item{display:flex;gap:20px;align-items:flex-start;padding:16px 0;position:relative}
-.tl-item:not(:last-child)::before{content:'';position:absolute;left:19px;top:48px;bottom:-4px;width:2px;background:rgba(20,18,16,.1)}
-.tl-icon{flex-shrink:0;width:40px;height:40px;border-radius:50%;border:2px solid rgba(20,18,16,.18);background:#fff;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
-.tl-item.done .tl-icon{background:var(--ink);border-color:var(--ink)}
-.tl-item.in-progress .tl-icon{background:var(--amber);border-color:var(--amber)}
-.tl-item.pending .tl-icon{background:#fff}
-.tl-label{font-size:16px;font-weight:500;color:var(--ink);padding-top:9px;line-height:1.3}
-.tl-item.pending .tl-label{color:var(--ink-soft)}
-
-/* Promise */
-.promise-list{display:grid;gap:14px;margin-top:36px;max-width:640px}
-.promise-row{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.55;color:var(--ink)}
-
-/* Help */
-.help-list{display:grid;gap:12px;margin-top:36px;max-width:640px}
-.help-row{display:flex;gap:18px;align-items:flex-start;padding:18px 20px;background:#fff;border-radius:var(--radius);border:1px solid rgba(20,18,16,.08);box-shadow:0 4px 12px rgba(20,18,16,.03)}
-.help-role{font-weight:700;font-size:16px;color:var(--ink);min-width:130px;flex-shrink:0}
-.help-desc{font-size:15px;color:var(--ink-soft)}
-@media(max-width:560px){.help-row{flex-direction:column;gap:4px}}
-.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
-@media(max-width:640px){.btn-row{flex-direction:column}.btn-row .btn{width:100%;justify-content:center}}
-
-/* Contact */
-.contact-list{display:grid;gap:12px;margin-top:34px;max-width:560px}
-.contact-row{display:flex;align-items:center;gap:16px;padding:16px 20px;background:#fff;border-radius:var(--radius);border:1px solid rgba(20,18,16,.08);text-decoration:none;transition:box-shadow .15s ease,transform .15s ease;color:var(--ink)}
-.contact-row:hover{box-shadow:0 6px 20px rgba(20,18,16,.08);transform:translateY(-2px)}
-.contact-row.disabled-contact{opacity:.45;cursor:not-allowed;pointer-events:none}
-.contact-label{font-weight:700;color:var(--ink);font-size:16px}
-.contact-value{font-size:13px;color:var(--ink-soft);font-family:'Space Mono',monospace;word-break:break-all;margin-top:2px}
+/* Contact Details */
+.contact-block{
+  margin-top:20px;
+  padding-top:24px;
+  border-top:1px solid rgba(20,18,16,.08);
+}
+.contact-label{
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--ink-soft);
+  font-weight:700;
+  margin-bottom:8px;
+}
+.email-disabled{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:12px;
+  background:var(--paper-2);
+  color:var(--ink-soft);
+  font-size:15px;
+  font-family:'Space Mono',monospace;
+  border:1px dashed rgba(20,18,16,.2);
+  cursor:not-allowed;
+  user-select:none;
+  min-height:44px;
+}
 
 /* Footer */
-footer{background:var(--ink);color:var(--paper);padding:72px 0 28px}
-.foot{display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start}
+footer{
+  background:var(--ink);
+  color:var(--paper);
+  padding:64px 0 28px;
+  margin-top:auto;
+}
+.foot{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:48px;
+  align-items:center;
+}
 .foot img{border-radius:50%}
-.foot h2{font-size:clamp(26px,3.8vw,38px);color:var(--paper);line-height:1.12;margin-bottom:14px}
+.foot h2{font-size:clamp(26px,4vw,38px);margin-bottom:12px}
 .foot h2 span{color:var(--amber)}
-.foot p{font-size:16px;color:rgba(244,236,221,.75);margin-top:10px;max-width:46ch}
-.foot-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.foot-links{display:flex;gap:20px;list-style:none;margin:16px 0 0;padding:0;flex-wrap:wrap}
-.foot-links a{text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500;transition:color .15s}
-.foot-links a:hover{color:var(--amber)}
-.copy{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(244,236,221,.1);margin-top:52px;padding-top:22px;font-size:13px;color:rgba(244,236,221,.5);font-family:'Space Mono',monospace}
+.foot p{color:rgba(244,236,221,.75);max-width:55ch;margin-bottom:20px;font-size:15.5px}
+.foot-links{
+  display:flex;
+  gap:18px;
+  list-style:none;
+  margin:0 0 22px;
+  padding:0;
+  flex-wrap:wrap;
+  font-size:14.5px;
+  font-weight:500;
+}
+.foot-links a{
+  text-decoration:none;
+  color:rgba(244,236,221,.65);
+  transition:color .15s ease;
+}
+.foot-links a:hover,.foot-links a[aria-current="page"]{color:var(--amber)}
+.foot-cta{display:flex;gap:14px;flex-wrap:wrap}
+.copy{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-top:1px solid rgba(244,236,221,.12);
+  margin-top:44px;
+  padding-top:20px;
+  font-size:13px;
+  color:rgba(244,236,221,.5);
+  font-family:'Space Mono',monospace;
+}
 
-/* Mobile */
-@media(max-width:860px){.foot{grid-template-columns:1fr;gap:32px}.foot img{width:120px;height:120px}}
+/* Responsive */
+@media(max-width:960px){
+  .founder-card{
+    grid-template-columns:1fr;
+    padding:40px 32px;
+    gap:36px;
+  }
+  .photo-wrap{
+    max-width:280px;
+    margin:0 auto;
+  }
+  .foot{grid-template-columns:1fr;gap:32px}
+  .foot img{width:120px;height:120px}
+}
 @media(max-width:640px){
   .desktop-only{display:none!important}
   .mobile-only{display:inline!important}
   .container{width:min(100%,100% - 32px)}
-  .section{padding:54px 0}
-  h2{font-size:clamp(25px,6.5vw,34px)}
-  .lead{font-size:16px;line-height:1.55}
-  .nav .container{min-height:56px;gap:8px}
-  .brand{gap:8px}
-  .brand img{width:34px;height:34px}
-  .brand-name{font-size:16px}
-  .nav-btn{padding:8px 13px;font-size:13px;min-height:36px}
+  main{padding:24px 0 56px}
+  .founder-card{padding:28px 20px;margin-top:16px;border-radius:16px}
+  .photo-wrap{max-width:220px}
+  .founder-text{font-size:16.5px}
+  .founder-actions{flex-direction:column}
+  .founder-actions .btn{width:100%;min-height:48px}
+  .email-disabled{font-size:13px;width:100%;justify-content:center}
   footer{padding:48px 0 28px}
   .foot{text-align:center;justify-items:center;gap:18px}
-  .foot img{width:110px;height:110px;margin:0 auto}
-  .foot h2{font-size:25px}
-  .foot p{margin:10px auto 0;font-size:14.5px}
-  .foot-cta{justify-content:center;flex-direction:column;gap:10px}
-  .foot-cta .btn{width:100%;max-width:320px;justify-content:center}
-  .copy{text-align:center;justify-content:center;flex-direction:column;gap:6px;margin-top:28px;font-size:12px}
+  .foot img{width:100px;height:100px;margin:0 auto}
   .foot-links{justify-content:center}
+  .foot-cta{justify-content:center;flex-direction:column}
+  .foot-cta .btn{width:100%;max-width:320px;justify-content:center}
+  .copy{text-align:center;justify-content:center;margin-top:24px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -220,393 +335,66 @@ footer{background:var(--ink);color:var(--paper);padding:72px 0 28px}
   </div>
 </header>
 
-<main id="top">
-
-<!-- HERO -->
-<section class="founder-hero" aria-labelledby="founder-name">
+<!-- MAIN -->
+<main>
   <div class="container">
+    <!-- Back to home -->
     <a href="index.html" class="back-link" id="back-home">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back to home
     </a>
-    <div class="founder-hero-inner">
-      <!-- Photo: shows monogram fallback if founder.jpg missing -->
-      <div>
+
+    <!-- Founder Card -->
+    <article class="founder-card" aria-labelledby="founder-title">
+      <!-- Photo / Monogram -->
+      <div class="photo-wrap">
         <img
           id="founder-photo"
           src="assets/founder.jpg"
           alt="Portrait of Mahendra Pratap, founder of Engineer Wala Cafe"
           class="founder-photo"
-          width="680" height="850"
+          width="640" height="800"
           loading="eager"
           onerror="this.style.display='none';document.getElementById('founder-monogram').style.display='flex'">
-        <div id="founder-monogram" class="founder-monogram" role="img" aria-label="Mahendra Pratap initials MP">
+        <div id="founder-monogram" class="founder-monogram" role="img" aria-label="Portrait placeholder: Mahendra Pratap initials MP">
           <span>MP</span>
         </div>
       </div>
+
       <!-- Content -->
-      <div class="founder-hero-content">
-        <p class="eyebrow">Meet the Founder</p>
-        <h1 id="founder-name" style="font-size:clamp(38px,5.5vw,64px);margin:14px 0 6px">Mahendra Pratap</h1>
-        <p style="font-size:20px;font-weight:700;color:var(--ink-soft)">Founder, Engineer Wala Cafe</p>
-        <div class="founder-meta-line" aria-label="Engineering student from Gorakhpur">
-          <span>Engineering student</span>
-          <span class="meta-dot" aria-hidden="true"></span>
-          <span>Gorakhpur</span>
+      <div class="founder-info">
+        <div>
+          <h1 id="founder-title" class="founder-name">Mahendra Pratap</h1>
+          <p class="founder-subline">Founder, Engineer Wala Cafe</p>
         </div>
-        <blockquote class="founder-intro">
-          &#8220;I am building the cafe I could never find: a calm place with fast internet, charging at every seat, good food, and people who build.&#8221;
-        </blockquote>
-        <div class="founder-btns">
-          <a id="btn-linkedin" class="btn linkedin" href="https://www.linkedin.com/in/mahendrapratap23/" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+
+        <p class="founder-text">
+          I have been to many cafes. Not one was made for people who actually work. So I am building the one I could not find: fast internet, charging at every seat, a calm space, good food, and people who build.
+        </p>
+
+        <!-- Buttons -->
+        <div class="founder-actions">
+          <a class="btn linkedin" href="https://www.linkedin.com/in/mahendrapratap23/" target="_blank" rel="noopener noreferrer" id="btn-linkedin">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             Connect on LinkedIn
           </a>
-          <a id="btn-whatsapp-hero" class="btn whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <a class="btn whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer" id="btn-whatsapp">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Join the community
           </a>
         </div>
+
+        <!-- Contact: Email placeholder disabled -->
+        <div class="contact-block">
+          <div class="contact-label">Contact</div>
+          <div class="email-disabled" aria-disabled="true" title="Official business email will be added before opening">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>Email: [PLACEHOLDER: business email]</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
   </div>
-</section>
-
-<!-- STORY -->
-<section class="section alt" aria-labelledby="story-title">
-  <div class="container">
-    <p class="eyebrow">Why I am building this</p>
-    <h2 id="story-title" style="margin:12px 0 0;max-width:18ch">The cafe I could not find.</h2>
-    <div class="story-body">
-      <p>I am Mahendra Pratap, an engineering student from Gorakhpur. I have been to many cafes. Not one of them was made for people who actually work.</p>
-      <p>The problems are always the same. Slow internet. No charging point near your seat. Noise. After an hour with a laptop, people start to stare. And if you want real food, you have to leave your work and come back.</p>
-      <p>So I decided to design the place I could not find. One space with fast internet, a charging point at every seat, a calm environment and good food. Start with chai, finish with dinner, and never leave your seat just to eat.</p>
-      <p>But a good place is more than good WiFi. I want engineers, founders, creators and online workers to meet people who are building too. Share ideas, find partners, and grow faster together.</p>
-    </div>
-    <p class="pull-quote">A place to focus, and people to grow with.</p>
-    <p class="story-closing">This is a plan today, not a finished cafe. I am sharing it early so you can help shape it.</p>
-  </div>
-</section>
-
-<!-- WHAT GOES WRONG -->
-<section class="section" aria-labelledby="problems-title">
-  <div class="container">
-    <p class="eyebrow">The real problems</p>
-    <h2 id="problems-title" style="margin:12px 0 0;max-width:22ch">What goes wrong in most cafes.</h2>
-    <div class="problem-list" role="list">
-
-      <div class="problem-row" role="listitem">
-        <div class="problem-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brick)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 6l4 4 4-4 4 4 4-4 4 4"/><path d="M1 12l4 4 4-4 4 4 4-4 4 4"/>
-          </svg>
-        </div>
-        <span class="problem-text">Slow or unstable internet</span>
-      </div>
-
-      <div class="problem-row" role="listitem">
-        <div class="problem-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brick)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="14" height="10" rx="2"/><path d="M16 10h2a2 2 0 0 1 0 4h-2"/><line x1="6" y1="17" x2="6" y2="19"/><line x1="10" y1="17" x2="10" y2="19"/>
-          </svg>
-        </div>
-        <span class="problem-text">No charging point near your seat</span>
-      </div>
-
-      <div class="problem-row" role="listitem">
-        <div class="problem-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brick)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-          </svg>
-        </div>
-        <span class="problem-text">Noise, and no quiet corner</span>
-      </div>
-
-      <div class="problem-row" role="listitem">
-        <div class="problem-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brick)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-          </svg>
-        </div>
-        <span class="problem-text">Feeling watched after one hour with a laptop</span>
-      </div>
-
-      <div class="problem-row" role="listitem">
-        <div class="problem-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brick)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
-          </svg>
-        </div>
-        <span class="problem-text">No proper food, so you leave your work to eat</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- WHAT I AM BUILDING -->
-<section class="section alt" aria-labelledby="building-title">
-  <div class="container">
-    <p class="eyebrow">The plan</p>
-    <h2 id="building-title" style="margin:12px 0 8px;max-width:20ch">What I am building.</h2>
-    <p class="lead">Six things that make this different. All planned, none invented.</p>
-    <div class="feature-grid">
-
-      <article class="feature-card">
-        <span class="feature-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></svg>
-          Planned
-        </span>
-        <h3>Fast, steady internet</h3>
-        <p>Dual-fiber WiFi, so video calls, uploads and deployments do not fail.</p>
-      </article>
-
-      <article class="feature-card">
-        <span class="feature-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></svg>
-          Planned
-        </span>
-        <h3>Charging at every seat</h3>
-        <p>A socket and USB-C port at your table. No hunting for a plug.</p>
-      </article>
-
-      <article class="feature-card">
-        <span class="feature-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></svg>
-          Planned
-        </span>
-        <h3>A calm place to focus</h3>
-        <p>A quiet, respectful space. No one stares and no one rushes you.</p>
-      </article>
-
-      <article class="feature-card">
-        <span class="feature-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></svg>
-          Planned
-        </span>
-        <h3>Food all day</h3>
-        <p>Chai, coffee, snacks, breakfast and dinner. Eat without leaving your work.</p>
-      </article>
-
-      <article class="feature-card">
-        <span class="feature-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></svg>
-          Planned
-        </span>
-        <h3>Whiteboard-top tables</h3>
-        <p>Whiteboard-top tables so you can draw your ideas, not just type them.</p>
-      </article>
-
-      <article class="feature-card">
-        <span class="feature-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.2 2.2"/></svg>
-          Planned
-        </span>
-        <h3>People who build</h3>
-        <p>Engineers, founders, creators and editors in one place. Meet, share and find partners.</p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- WHO IT IS FOR -->
-<section class="section" aria-labelledby="audience-title">
-  <div class="container">
-    <p class="eyebrow">Who it is for</p>
-    <h2 id="audience-title" style="margin:12px 0 0">Built for people who build.</h2>
-    <div class="chip-list" role="list" aria-label="Target audience">
-      <span class="chip" role="listitem">Engineers</span>
-      <span class="chip" role="listitem">Founders</span>
-      <span class="chip" role="listitem">Content creators</span>
-      <span class="chip" role="listitem">Video editors</span>
-      <span class="chip" role="listitem">Freelancers</span>
-      <span class="chip" role="listitem">Online workers</span>
-      <span class="chip" role="listitem">Students with big goals</span>
-    </div>
-  </div>
-</section>
-
-<!-- STATUS BOX -->
-<section class="section alt" aria-labelledby="status-title">
-  <div class="container">
-    <p class="eyebrow">Transparency</p>
-    <h2 id="status-title" style="margin:12px 0 0;max-width:24ch">What is confirmed and what is planned.</h2>
-    <div class="status-box" role="table" aria-label="Project status">
-      <div class="status-row" role="row">
-        <span class="status-label" role="rowheader">Location</span>
-        <span class="status-value" role="cell">Not final. Voting is open. <a href="index.html#where" style="color:var(--amber-deep);font-weight:700">Vote now &rarr;</a></span>
-      </div>
-      <div class="status-row" role="row">
-        <span class="status-label" role="rowheader">Opening</span>
-        <span class="status-value" role="cell">After my graduation.</span>
-      </div>
-      <div class="status-row" role="row">
-        <span class="status-label" role="rowheader">Prices</span>
-        <span class="status-value" role="cell">Planned. Final prices will be shared before opening.</span>
-      </div>
-      <div class="status-row" role="row">
-        <span class="status-label" role="rowheader">Photos</span>
-        <span class="status-value" role="cell">AI concept renders. The real space may look different.</span>
-      </div>
-      <div class="status-row" role="row">
-        <span class="status-label" role="rowheader">Payments</span>
-        <span class="status-value" role="cell">None are being collected at this stage.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TIMELINE -->
-<!-- Edit state by changing class on .tl-item: done | in-progress | pending -->
-<section class="section" aria-labelledby="progress-title">
-  <div class="container">
-    <p class="eyebrow">Progress</p>
-    <h2 id="progress-title" style="margin:12px 0 0">Progress so far.</h2>
-    <div class="timeline" role="list">
-
-      <div class="tl-item done" role="listitem">
-        <div class="tl-icon" aria-label="Done">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAF7F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
-        </div>
-        <span class="tl-label">Website live</span>
-      </div>
-
-      <div class="tl-item in-progress" role="listitem">
-        <div class="tl-icon" aria-label="In progress">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2a10 10 0 0 1 0 20"/></svg>
-        </div>
-        <span class="tl-label">Location vote open</span>
-      </div>
-
-      <div class="tl-item pending" role="listitem">
-        <div class="tl-icon" aria-label="Pending">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(20,18,16,.3)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <span class="tl-label">WhatsApp community</span>
-      </div>
-
-      <div class="tl-item pending" role="listitem">
-        <div class="tl-icon" aria-label="Pending">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(20,18,16,.3)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <span class="tl-label">First meetup</span>
-      </div>
-
-      <div class="tl-item pending" role="listitem">
-        <div class="tl-icon" aria-label="Pending">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(20,18,16,.3)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <span class="tl-label">Table prototype</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROMISE -->
-<section class="section alt" aria-labelledby="promise-title">
-  <div class="container">
-    <p class="eyebrow">My commitment</p>
-    <h2 id="promise-title" style="margin:12px 0 0;max-width:20ch">My promise to you.</h2>
-    <div class="promise-list" role="list">
-      <div class="promise-row" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="m5 12 5 5 9-10"/></svg>
-        I will share progress openly, including what does not work.
-      </div>
-      <div class="promise-row" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="m5 12 5 5 9-10"/></svg>
-        Photos marked as AI renders will stay marked until real photos replace them.
-      </div>
-      <div class="promise-row" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="m5 12 5 5 9-10"/></svg>
-        Your votes and feedback will shape the location and the pass price.
-      </div>
-      <div class="promise-row" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><path d="m5 12 5 5 9-10"/></svg>
-        No payment is being collected at this stage.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW YOU CAN HELP -->
-<section class="section" aria-labelledby="help-title">
-  <div class="container">
-    <p class="eyebrow">Join the effort</p>
-    <h2 id="help-title" style="margin:12px 0 0;max-width:22ch">How you can help.</h2>
-    <div class="help-list" role="list">
-      <div class="help-row" role="listitem">
-        <span class="help-role">Carpenters</span>
-        <span class="help-desc">To build glass-top whiteboard tables</span>
-      </div>
-      <div class="help-row" role="listitem">
-        <span class="help-role">Space owners</span>
-        <span class="help-desc">First-floor spaces in Taramandal, Civil Lines, Golghar or the MMMUT area</span>
-      </div>
-      <div class="help-row" role="listitem">
-        <span class="help-role">Mentors</span>
-        <span class="help-desc">From cafe, hospitality or startup work</span>
-      </div>
-      <div class="help-row" role="listitem">
-        <span class="help-role">Builders</span>
-        <span class="help-desc">To join the first community meetup</span>
-      </div>
-    </div>
-    <div class="btn-row">
-      <a id="help-whatsapp" class="btn whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Join the community
-      </a>
-      <a id="help-vote" class="btn ghost" href="index.html#where">Vote for the location &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section alt" aria-labelledby="contact-title">
-  <div class="container">
-    <p class="eyebrow">Get in touch</p>
-    <h2 id="contact-title" style="margin:12px 0 0">Contact.</h2>
-    <div class="contact-list" role="list">
-
-      <a id="contact-linkedin" class="contact-row" href="https://www.linkedin.com/in/mahendrapratap23/" target="_blank" rel="noopener noreferrer" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--amber-deep)" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        <div>
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value">linkedin.com/in/mahendrapratap23</div>
-        </div>
-      </a>
-
-      <a id="contact-whatsapp" class="contact-row" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        <div>
-          <div class="contact-label">WhatsApp Community</div>
-          <div class="contact-value">chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E</div>
-        </div>
-      </a>
-
-      <!-- Email disabled until business email is confirmed -->
-      <div id="contact-email" class="contact-row disabled-contact" role="listitem" aria-disabled="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        <div>
-          <div class="contact-label">Email &nbsp;<span style="font-family:'Space Mono',monospace;font-size:11px;font-weight:400;opacity:.65">[PLACEHOLDER: business email]</span></div>
-          <div class="contact-value">Will be added before opening.</div>
-        </div>
-      </div>
-
-      <a id="contact-instagram" class="contact-row" href="https://instagram.com/engineerwalacafe.in" target="_blank" rel="noopener noreferrer" role="listitem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--amber-deep)" stroke="none"/></svg>
-        <div>
-          <div class="contact-label">Instagram</div>
-          <div class="contact-value">@engineerwalacafe.in</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
 </main>
 
 <!-- FOOTER -->
@@ -617,71 +405,28 @@ footer{background:var(--ink);color:var(--paper);padding:72px 0 28px}
       <div>
         <h2>Chai ke sath <span>banate hai sab.</span></h2>
         <p>Gorakhpur, Uttar Pradesh. Abhi hum validation stage mein hain: aapka vote humein sahi jagah chunne mein madad karta hai.</p>
-        <div class="foot-cta">
-          <a id="footer-whatsapp" class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp Community Join Karo
-          </a>
-          <a id="footer-home" class="btn small" style="background:transparent;border-color:rgba(244,236,221,.4);color:var(--paper)" href="index.html">
-            &larr; Back to home
-          </a>
-        </div>
         <ul class="foot-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="index.html#table">Whiteboard Tables</a></li>
           <li><a href="index.html#pass">Builder Pass</a></li>
-          <li><a href="index.html#where">Vote for location</a></li>
+          <li><a href="index.html#where">Vote</a></li>
           <li><a href="founder.html" aria-current="page">Founder</a></li>
         </ul>
+        <div class="foot-cta">
+          <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Community Join Karo
+          </a>
+          <a class="btn small" style="background:transparent;border-color:rgba(244,236,221,.4);color:var(--paper)" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
       </div>
     </div>
     <div class="copy"><span>&copy; engineerwalacafe.in &middot; Made with &#10084;&#65039; in Gorakhpur</span></div>
   </div>
 </footer>
-
-<!--
-================================================================
-CO-FOUNDER CARD — Uncomment when a co-founder is confirmed.
-Same layout as the main founder card above.
-================================================================
-<section class="section" aria-labelledby="cofounder-name">
-  <div class="container">
-    <p class="eyebrow">Meet the Co-Founder</p>
-    <div class="founder-hero-inner">
-      <div>
-        <img
-          id="cofounder-photo"
-          src="assets/cofounder.jpg"
-          alt="Portrait of [Co-Founder Name], co-founder of Engineer Wala Cafe"
-          class="founder-photo"
-          width="680" height="850"
-          loading="lazy"
-          onerror="this.style.display='none';document.getElementById('cofounder-monogram').style.display='flex'">
-        <div id="cofounder-monogram" class="founder-monogram" role="img" aria-label="[Co-Founder initials]">
-          <span>[XX]</span>
-        </div>
-      </div>
-      <div class="founder-hero-content">
-        <h2 id="cofounder-name">[Co-Founder Full Name]</h2>
-        <p style="font-size:20px;font-weight:700;color:var(--ink-soft)">Co-Founder, Engineer Wala Cafe</p>
-        <div class="founder-meta-line">
-          <span>[Role / background]</span>
-          <span class="meta-dot"></span>
-          <span>[City]</span>
-        </div>
-        <blockquote class="founder-intro">"[Co-founder quote here]"</blockquote>
-        <div class="founder-btns">
-          <a class="btn linkedin" href="[LinkedIn URL]" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-          <a class="btn whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">Join the community</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-================================================================
-END CO-FOUNDER CARD
-================================================================
--->
 
 </body>
 </html>
