@@ -246,6 +246,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,59,.55);b
         <li><a href="#table">Whiteboard Tables</a></li>
         <li><a href="#pass">Builder Pass</a></li>
         <li><a href="#where">Kahan khule?</a></li>
+        <li><a href="founder.html">Founder</a></li>
       </ul>
     </nav>
     <a class="btn small whatsapp nav-btn" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
@@ -367,6 +368,39 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,59,.55);b
   </div>
 </section>
 
+<!-- ============ FOUNDER TEASER ============ -->
+<section class="section alt" id="founder-teaser" aria-labelledby="founder-teaser-title">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">The person behind this</p>
+      <h2 id="founder-teaser-title" style="margin:12px 0 16px">Who is building this?</h2>
+      <p class="lead">Meet Mahendra Pratap, an engineering student from Gorakhpur, building the cafe he could not find.</p>
+      <a class="btn" href="founder.html" style="margin-top:28px" id="btn-meet-founder">
+        Meet the founder &nbsp;&rarr;
+      </a>
+    </div>
+    <!-- Photo: shows MP monogram if assets/founder.jpg is missing -->
+    <div style="display:flex;align-items:center;justify-content:center">
+      <div style="position:relative;width:240px;height:300px;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px rgba(20,18,16,.14);border:3px solid var(--amber);flex-shrink:0">
+        <img
+          id="teaser-founder-photo"
+          src="assets/founder.jpg"
+          alt="Mahendra Pratap, founder of Engineer Wala Cafe"
+          width="240" height="300"
+          loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;display:block"
+          onerror="this.style.display='none';document.getElementById('teaser-monogram').style.display='flex'">
+        <div
+          id="teaser-monogram"
+          style="display:none;width:100%;height:100%;background:var(--amber);align-items:center;justify-content:center"
+          role="img" aria-label="Mahendra Pratap initials">
+          <span style="font-family:'Alfa Slab One',serif;font-size:64px;color:var(--ink);line-height:1">MP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WHERE ============ -->
 <section class="section" id="where" aria-labelledby="where-title">
   <div class="container">
@@ -441,6 +475,13 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,59,.55);b
       <div>
         <h2>Chai ke sath <span>banate hai sab.</span></h2>
         <p>Gorakhpur, Uttar Pradesh. Abhi hum validation stage mein hain: aapka vote humein sahi jagah chunne mein madad karta hai.</p>
+        <ul style="display:flex;gap:16px;list-style:none;margin:0 0 20px;padding:0;flex-wrap:wrap">
+          <li><a href="index.html" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Home</a></li>
+          <li><a href="#table" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Whiteboard Tables</a></li>
+          <li><a href="#pass" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Builder Pass</a></li>
+          <li><a href="#where" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Vote</a></li>
+          <li><a href="founder.html" style="text-decoration:none;color:var(--amber);font-size:14px;font-weight:700">Founder</a></li>
+        </ul>
         <div class="foot-cta">
           <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
