@@ -26,7 +26,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+body{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden;width:100%}
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;line-height:1.08;margin:0}
@@ -43,6 +43,8 @@ p{margin:0}
 .lead{font-size:19px;max-width:60ch;color:var(--ink-soft)}
 :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.desktop-only{display:inline}
+.mobile-only{display:none}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 16px/1 'DM Sans',sans-serif;padding:16px 26px;border-radius:999px;border:2px solid var(--amber);background:var(--amber);color:var(--ink);cursor:pointer;text-decoration:none;min-height:48px;transition:transform .15s ease,background .15s ease}
@@ -59,27 +61,28 @@ p{margin:0}
 .btn.instagram svg{flex:none}
 
 /* Nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);color:var(--ink);border-bottom:1px solid rgba(20,18,16,.08)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);color:var(--ink);border-bottom:1px solid rgba(20,18,16,.08);width:100%}
 .nav .container{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .brand img{flex-shrink:0;border-radius:50%;display:block;transition:transform .25s ease}
 .brand:hover img{transform:rotate(8deg) scale(1.06)}
-.brand-name{font-family:'Alfa Slab One',serif;font-size:19px;letter-spacing:.01em;color:var(--ink)}
+.brand-name{font-family:'Alfa Slab One',serif;font-size:19px;letter-spacing:.01em;color:var(--ink);white-space:nowrap}
 .brand-name span{color:var(--amber-deep)}
 .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
 .nav ul a{text-decoration:none;color:var(--ink);opacity:.8}
 .nav ul a:hover{opacity:1;color:var(--amber-deep)}
+.nav-btn{flex-shrink:0}
 @media (max-width:860px){.nav ul{display:none}}
 
 /* Hero */
 .hero{position:relative;color:var(--paper);background:
   linear-gradient(90deg,rgba(20,18,16,.93) 0%,rgba(20,18,16,.72) 48%,rgba(20,18,16,.25) 100%),
   url('assets/cafe-interior.jpg') center 40%/cover no-repeat,var(--ink);
-  min-height:min(86vh,820px);display:flex;align-items:center}
+  min-height:min(86vh,820px);display:flex;align-items:center;overflow:hidden}
 .hero .container{padding:80px 0}
-.hero h1{font-size:clamp(46px,8vw,104px);max-width:11ch;margin:18px 0 22px}
+.hero h1{font-size:clamp(38px,8vw,104px);max-width:11ch;margin:18px 0 22px}
 .hero h1 em{font-style:normal;color:var(--amber)}
-.hero .lead{max-width:48ch;margin-bottom:34px;font-size:clamp(17px,2vw,21px);color:rgba(244,236,221,.92)}
+.hero .lead{max-width:48ch;margin-bottom:34px;font-size:clamp(16px,2vw,21px);color:rgba(244,236,221,.92)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
 .hero-qr-wrap{margin-top:22px}
 .hero-qr-badge{display:inline-flex;align-items:center;gap:16px;padding:12px 18px 12px 12px;background:rgba(20,18,16,.75);backdrop-filter:blur(14px);border:1px solid rgba(244,236,221,.25);border-radius:18px;color:#FAF7F2;text-decoration:none;transition:transform .2s ease,background .2s ease,border-color .2s ease;max-width:440px}
@@ -100,7 +103,13 @@ p{margin:0}
 .fact:first-child{border-left:0}
 .fact b{font-family:'Alfa Slab One',serif;font-weight:400;font-size:26px;line-height:1.1}
 .fact span{font-size:14px;font-weight:500}
-@media (max-width:760px){.facts .container{grid-template-columns:1fr}.fact{border-left:0;border-top:2px solid rgba(20,18,16,.18)}.fact:first-child{border-top:0}}
+@media (max-width:760px){
+  .facts .container{grid-template-columns:1fr}
+  .fact{border-left:0;border-top:1px solid rgba(20,18,16,.18);padding:14px 18px}
+  .fact:first-child{border-top:0}
+  .fact b{font-size:22px}
+  .fact span{font-size:13.5px}
+}
 
 /* USP */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -158,25 +167,67 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,59,.55);b
 .zone-col h3{display:flex;align-items:center;gap:10px;font-size:21px;margin-bottom:4px}
 .zone-col .dot{width:14px;height:14px;border-radius:50%}
 .red .dot{background:var(--red)}.green .dot{background:var(--green)}
-.notes{display:grid;gap:16px;margin-top:20px}
-.note{background:#fff;padding:16px 18px;border-radius:6px;box-shadow:0 8px 20px rgba(20,18,16,.1);transform:rotate(-1deg);border-top:8px solid}
-.note:nth-child(even){transform:rotate(1.2deg)}
-.red .note{border-top-color:var(--red)}.green .note{border-top-color:var(--green)}
-.note p{font-size:16px}
-.note small{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft)}
-.tag{background:var(--ink);color:var(--paper);border-radius:4px;padding:1px 6px;font-size:11px}
-.wall-form{margin-top:34px}
-.wall-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:640px){.wall-form .row{grid-template-columns:1fr}}
 
-/* Footer */
-footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,18,16,.1);padding:70px 0 40px}
-.foot{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center}
-@media (max-width:760px){.foot{grid-template-columns:1fr}}
-.foot h2{font-size:clamp(28px,4vw,44px);color:var(--ink)}
-.foot h2 span{color:var(--amber-deep)}
-.foot p{color:var(--ink-soft);margin-top:12px;max-width:50ch}
-.copy{margin-top:44px;padding-top:22px;border-top:1px solid rgba(20,18,16,.12);font-size:13px;color:rgba(20,18,16,.6);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+/* Mobile Responsive Adjustments */
+@media (max-width:640px){
+  .desktop-only{display:none!important}
+  .mobile-only{display:inline!important}
+  .container{width:min(100%,100% - 32px)}
+  .section{padding:54px 0}
+  h2{font-size:clamp(25px,6.5vw,34px)}
+  .lead{font-size:16px;line-height:1.55}
+
+  /* Nav */
+  .nav .container{min-height:56px;gap:8px}
+  .brand{gap:8px}
+  .brand img{width:34px;height:34px}
+  .brand-name{font-size:16px}
+  .nav-btn{padding:8px 13px;font-size:13px;min-height:36px}
+
+  /* Hero */
+  .hero{min-height:auto}
+  .hero .container{padding:38px 0 24px}
+  .status{font-size:11px;padding:6px 12px;letter-spacing:.1em}
+  .hero h1{font-size:clamp(32px,8.2vw,46px);margin:14px 0 16px}
+  .hero .lead{margin-bottom:22px;font-size:15.5px}
+  .hero-cta{flex-direction:column;width:100%;gap:10px}
+  .hero-cta .btn{width:100%;text-align:center;justify-content:center;padding:14px 18px;font-size:16px}
+  .hero-qr-wrap{margin-top:16px;width:100%}
+  .hero-qr-badge{width:100%;max-width:100%;padding:12px;gap:12px}
+  .hero-qr-badge img{width:64px;height:80px}
+  .hero-qr-title{font-size:14px}
+  .hero-qr-sub{font-size:12px}
+  .render-note{position:static;text-align:center;margin-top:18px;padding:0 8px;display:block;font-size:11px;line-height:1.4}
+
+  /* USP */
+  .usp{padding:14px 16px;gap:12px}
+  .usp .ico{width:42px;height:42px;border-radius:12px}
+  .usp h3{font-size:17.5px}
+  .usp p{font-size:14.5px}
+
+  /* Builder Pass */
+  .price-card{padding:22px 18px}
+  .price-card .price{font-size:54px}
+  .split-legend{font-size:12px}
+  .checks li{font-size:14.5px}
+  .monthly{padding:16px 18px;flex-direction:column;align-items:flex-start;gap:8px}
+
+  /* Poll */
+  .zone{padding:14px 16px;gap:6px 10px}
+  .zone h3{font-size:16.5px}
+  .zone small{font-size:13px}
+  .zone .btn{padding:9px 15px;font-size:13px;min-height:38px}
+
+  /* Footer */
+  footer{padding:48px 0 28px}
+  .foot{text-align:center;justify-items:center;gap:18px}
+  .foot img{width:110px;height:110px;margin:0 auto}
+  .foot h2{font-size:25px}
+  .foot p{margin:10px auto 0;font-size:14.5px}
+  .foot div > div{justify-content:center!important;width:100%;flex-direction:column;gap:10px}
+  .foot .btn{width:100%;max-width:320px;justify-content:center}
+  .copy{text-align:center;justify-content:center;flex-direction:column;gap:6px;margin-top:28px;font-size:12px}
+}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -197,7 +248,10 @@ footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,1
         <li><a href="#where">Kahan khule?</a></li>
       </ul>
     </nav>
-    <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">☕ Community Join Karo</a>
+    <a class="btn small whatsapp nav-btn" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
+      <span class="desktop-only">☕ Community Join Karo</span>
+      <span class="mobile-only">☕ Join</span>
+    </a>
   </div>
 </header>
 
@@ -223,9 +277,15 @@ footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,1
       <a href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" class="hero-qr-badge" target="_blank" rel="noopener" title="Scan with phone camera or click to join WhatsApp Community">
         <img src="assets/whatsapp-community-qr.jpg" alt="WhatsApp Community QR code" width="80" height="98">
         <div class="hero-qr-info">
-          <span class="hero-qr-tag">Scan &amp; Join</span>
-          <span class="hero-qr-title">Direct phone se scan karo</span>
-          <span class="hero-qr-sub">Camera se scan karo ya click karke judo &rarr;</span>
+          <span class="hero-qr-tag">WhatsApp Community</span>
+          <span class="hero-qr-title">
+            <span class="desktop-only">Direct phone se scan karo</span>
+            <span class="mobile-only">Tap to join community</span>
+          </span>
+          <span class="hero-qr-sub">
+            <span class="desktop-only">Camera se scan karo ya click karke judo &rarr;</span>
+            <span class="mobile-only">Direct WhatsApp group par judo &rarr;</span>
+          </span>
         </div>
       </a>
     </div>
@@ -381,7 +441,7 @@ footer{background:var(--paper-2);color:var(--ink);border-top:1px solid rgba(20,1
       <div>
         <h2>Chai ke sath <span>banate hai sab.</span></h2>
         <p>Gorakhpur, Uttar Pradesh. Abhi hum validation stage mein hain: aapka vote humein sahi jagah chunne mein madad karta hai.</p>
-        <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <div class="foot-cta">
           <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp Community Join Karo
