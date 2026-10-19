@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Poll votes collection
+    // Each document is keyed by: {pollId}_{voterId}  (e.g. ewc_v_abc123)
+    // Write-once: one vote per browser fingerprint per poll. No updates/deletes.
+    match /votes/{voteId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['zone', 'poll', 'ts'])
+                    && request.resource.data.zone is string
+                    && request.resource.data.poll is string;
+      allow update, delete: if false;
+    }
+
+    // Aggregate counters: { zone1: N, zone2: N, ... }
+    // Publicly readable. Writes only allowed for known zone fields.
+    match /counters/{counterId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

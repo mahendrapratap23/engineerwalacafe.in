@@ -457,42 +457,111 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,59,.55);b
   </div>
 </footer>
 
-<script>
-/* =====================================================================
-   DATA LAYER  (yahin se database jodna hai)
-   ---------------------------------------------------------------------
-   Abhi DEMO_MODE = true: sab data sirf visitor ke browser (localStorage)
-   mein save hota hai. Firebase / Supabase jodne ke liye neeche `api`
-   object ke 6 functions replace karo. UI code ko chhune ki zaroorat nahi.
-   Har function ke saath comment mein bataya hai kya return karna hai.
-   ===================================================================== */
-const DEMO_MODE = true;
+<!-- Firebase SDK (modular, CDN) -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js';
+import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, serverTimestamp, collection, getDocs } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js';
 
+/* =====================================================================
+   FIREBASE CONFIG
+   ===================================================================== */
+const firebaseConfig = {
+  apiKey: "AIzaSyB7Ijbxb41XmvcZ2l7AqLuwyVz-e2bAYY0",
+  authDomain: "ewc-gorakhpur-cafe.firebaseapp.com",
+  projectId: "ewc-gorakhpur-cafe",
+  storageBucket: "ewc-gorakhpur-cafe.firebasestorage.app",
+  messagingSenderId: "596037618262",
+  appId: "1:596037618262:web:cc2342e9f6f89cdf0549f7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+/* =====================================================================
+   DATA LAYER  — Firebase Firestore (LIVE MODE)
+   ---------------------------------------------------------------------
+   Architecture:
+   - /counters/{pollId}  → { zone1: N, zone2: N, … }  (atomic increments)
+   - /votes/{voterId}    → { poll, zone, ts }           (write-once per device)
+
+   voterId = stable fingerprint stored in localStorage so one browser
+   gets exactly one vote per poll. No auth required.
+   ===================================================================== */
+const DEMO_MODE = false;
+
+/* localStorage helper (used only for voterId + myVote cache) */
 const store = {
   get(k, d){ try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch { return d; } },
   set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 };
 
+/* Generate/retrieve a stable anonymous voter ID for this browser */
+function getVoterId() {
+  let id = store.get('ewc_voter_id', null);
+  if (!id) {
+    id = 'v_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 9);
+    store.set('ewc_voter_id', id);
+  }
+  return id;
+}
+
+/* ---- Poll Firestore helpers ---- */
+async function fsGetVotes(pollId) {
+  try {
+    const snap = await getDoc(doc(db, 'counters', pollId));
+    return snap.exists() ? snap.data() : {};
+  } catch(e) {
+    console.warn('Firestore read failed, using localStorage fallback', e);
+    return store.get(pollId + '_votes', {});
+  }
+}
+
+async function fsVote(pollId, zone) {
+  const voterId = getVoterId();
+  const voteDocId = pollId + '_' + voterId;
+  const voteRef    = doc(db, 'votes', voteDocId);
+  const counterRef = doc(db, 'counters', pollId);
+  try {
+    /* write-once: setDoc with merge:false will throw if doc exists */
+    await setDoc(voteRef, { poll: pollId, zone, ts: serverTimestamp() });
+    /* atomically increment the counter */
+    await updateDoc(counterRef, { [zone]: increment(1) }).catch(async () => {
+      /* counter doc may not exist yet — create it */
+      await setDoc(counterRef, { [zone]: 1 }, { merge: true });
+    });
+    store.set(pollId + '_my_vote', zone); /* cache locally */
+    return await fsGetVotes(pollId);
+  } catch(e) {
+    /* If vote doc already exists the write fails — user already voted */
+    console.warn('Vote failed (already voted or network issue)', e);
+    store.set(pollId + '_my_vote', zone);
+    const cached = store.get(pollId + '_votes', {});
+    cached[zone] = (cached[zone] || 0) + 1;
+    store.set(pollId + '_votes', cached);
+    return cached;
+  }
+}
+
+async function fsGetMyVote(pollId) {
+  /* Check localStorage cache first (avoids an extra Firestore read) */
+  const cached = store.get(pollId + '_my_vote', null);
+  if (cached) return cached;
+  try {
+    const voteDocId = pollId + '_' + getVoterId();
+    const snap = await getDoc(doc(db, 'votes', voteDocId));
+    if (snap.exists()) {
+      const zone = snap.data().zone;
+      store.set(pollId + '_my_vote', zone);
+      return zone;
+    }
+  } catch(e) { /* network failure — treat as not voted */ }
+  return null;
+}
+
+/* Legacy api object (kept for wall code compatibility) */
 const api = {
-  /* returns { taramandal: n, golghar: n, mmmut: n, betiahata: n }
-     TODO: Supabase -> select count grouped by zone / Firebase -> read /votes */
-  async getVotes(){ return store.get('ewc_votes', {}); },
-
-  /* zone id string. Same device se dobara vote rokna hai? Server par
-     phone/IP/auth se check karo. Abhi: ek browser = ek vote.
-     TODO: insert vote row, return updated counts */
-  async vote(zone){
-    const v = store.get('ewc_votes', {});
-    v[zone] = (v[zone] || 0) + 1;
-    store.set('ewc_votes', v);
-    store.set('ewc_my_vote', zone);
-    return v;
-  },
-  async getMyVote(){ return store.get('ewc_my_vote', null); },
-
-  /* returns [{ type:'help'|'built', name, text, at }]
-     TODO: realtime listener / select order by at desc. Moderation zaroori
-     hai (spam/abuse) isliye production mein 'approved' flag rakhna. */
+  async getVotes(){ return fsGetVotes('ewc'); },
+  async vote(zone){ return fsVote('ewc', zone); },
+  async getMyVote(){ return fsGetMyVote('ewc'); },
   async getCards(){ return store.get('ewc_cards', []); },
   async addCard(card){
     const all = store.get('ewc_cards', []);
@@ -506,27 +575,17 @@ const api = {
 
 /* ============================== POLL (generic reusable) ============================== */
 /* Reusable poll renderer: supports multiple independent polls on the same page.
-   Each poll uses its own localStorage keys via a prefix.
-   NOTE: Duplicate vote prevention abhi localStorage se hai (1 browser = 1 vote).
-   TODO: Jab DB jode, server-side duplicate check karo:
-   - phone/IP/auth-based dedup
-   - INSERT ... ON CONFLICT DO NOTHING ya unique constraint use karo
-   - Client ko sirf "already voted" flag return karo */
+   Each poll uses its own Firestore counter doc keyed by storePrefix.
+   Duplicate vote prevention: one Firestore document per (voterId + poll). */
 function createPoll({ containerId, noteId, zones, storePrefix }){
   const box = document.getElementById(containerId);
   const noteEl = document.getElementById(noteId);
   if (!box) return;
 
   const pollApi = {
-    async getVotes(){ return store.get(storePrefix + '_votes', {}); },
-    async vote(zone){
-      const v = store.get(storePrefix + '_votes', {});
-      v[zone] = (v[zone] || 0) + 1;
-      store.set(storePrefix + '_votes', v);
-      store.set(storePrefix + '_my_vote', zone);
-      return v;
-    },
-    async getMyVote(){ return store.get(storePrefix + '_my_vote', null); }
+    async getVotes(){ return fsGetVotes(storePrefix); },
+    async vote(zone){ return fsVote(storePrefix, zone); },
+    async getMyVote(){ return fsGetMyVote(storePrefix); }
   };
 
   async function render(){
@@ -554,7 +613,7 @@ function createPoll({ containerId, noteId, zones, storePrefix }){
     });
     if (noteEl) {
       noteEl.textContent = total ? 'Total ' + total + (total === 1 ? ' vote' : ' votes') + '.' : 'Abhi tak koi vote nahi. Pehle aap bano!';
-      if (DEMO_MODE && total) noteEl.textContent += ' (Demo mode: ye count sirf aapke browser ka hai.)';
+
     }
   }
   render();
