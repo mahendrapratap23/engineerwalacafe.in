@@ -454,14 +454,23 @@
       padding: 9px 15px;
       border-radius: 10px;
       background: rgba(20, 18, 16, 0.035);
-      color: var(--ink-muted);
+      color: var(--ink);
       font-size: 13px;
       font-family: var(--font-mono);
-      border: 1px dashed rgba(20, 18, 16, 0.2);
-      cursor: not-allowed;
-      user-select: none;
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      cursor: pointer;
+      user-select: auto;
       min-height: 44px;
       width: fit-content;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    .contact-pill:hover {
+      background: rgba(229, 142, 27, 0.1);
+      border-color: var(--amber);
+      color: var(--ink);
+      transform: translateY(-1px);
     }
 
     .contact-pill svg {
@@ -788,15 +797,14 @@
                 </a>
               </div>
 
-              <div class="contact-pill" aria-disabled="true"
-                title="Official business email will be added before opening">
+              <a class="contact-pill" href="mailto:engineerwalacafe@gmail.com" title="Email Engineer Wala Cafe">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                <span>Email: [PLACEHOLDER: business email]</span>
-              </div>
+                <span>Email: engineerwalacafe@gmail.com</span>
+              </a>
             </div>
           </div>
         </div>
@@ -834,11 +842,19 @@
               rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <rect x="2" y="2" width="20" height="16" rx="5" />
                 <circle cx="12" cy="12" r="5" />
                 <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
               </svg>
               <span>Instagram</span>
+            </a>
+            <a class="btn btn-outline" href="mailto:engineerwalacafe@gmail.com">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span>Email</span>
             </a>
           </div>
         </div>
