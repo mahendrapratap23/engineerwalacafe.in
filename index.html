@@ -1,690 +1,1497 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Engineer Wala Cafe | Chai peeyo, draw karo, build karo (Gorakhpur)</title>
-<meta name="description" content="Gorakhpur ka pehla cafe jahan har table ek whiteboard hai. Engineers, creators aur founders ke liye kulhad chai, fast WiFi aur comfortable seats.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#141210;
-  --ink-2:#2B2723;
-  --ink-soft:#544F49;
-  --paper:#FAF7F2;
-  --paper-2:#F0EAE1;
-  --amber:#E9A23B;
-  --amber-deep:#C87A1E;
-  --brick:#9C4326;
-  --blue:#2457C5;
-  --red:#C8402B;
-  --green:#2E7D4F;
-  --radius:18px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden;width:100%}
-img{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;line-height:1.08;margin:0}
-h2{font-size:clamp(30px,4.6vw,52px)}
-h3{font-size:22px}
-p{margin:0}
-.container{width:min(1180px,100% - 48px);margin-inline:auto}
-.mono{font-family:'Space Mono',ui-monospace,monospace}
-.eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-deep);font-weight:700}
-.on-dark .eyebrow,.dark .eyebrow{color:var(--amber)}
-.section{padding:96px 0}
-.dark{background:var(--ink);color:var(--paper)}
-.alt{background:var(--paper-2)}
-.lead{font-size:19px;max-width:60ch;color:var(--ink-soft)}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.desktop-only{display:inline}
-.mobile-only{display:none}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineer Wala Cafe | Chai peeyo, draw karo, build karo (Gorakhpur)</title>
+  <meta name="description" content="Gorakhpur ka pehla cafe jahan har table ek whiteboard hai. Engineers, creators aur founders ke liye kulhad chai, fast WiFi aur comfortable seats.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Engineer Wala Cafe | Chai peeyo, draw karo, build karo">
+  <meta property="og:description" content="Gorakhpur ka pehla cafe jahan har table ek whiteboard hai. Engineers, creators aur founders ke liye kulhad chai, fast WiFi aur comfortable seats.">
+  <meta property="og:image" content="assets/engineerwalacafe-badge-transparent.svg">
+  <meta property="og:type" content="website">
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 16px/1 'DM Sans',sans-serif;padding:16px 26px;border-radius:999px;border:2px solid var(--amber);background:var(--amber);color:var(--ink);cursor:pointer;text-decoration:none;min-height:48px;transition:transform .15s ease,background .15s ease}
-.btn:hover{transform:translateY(-2px);background:#f3b653}
-.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
-.btn.ghost:hover{background:rgba(20,18,16,.06)}
-.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
-.btn.small{padding:11px 18px;font-size:14px;min-height:44px;white-space:nowrap}
-.btn.whatsapp{background:#25D366;border-color:#25D366;color:#fff;font-size:17px;padding:18px 30px}
-.btn.whatsapp:hover{background:#1ebe5d;transform:translateY(-2px)}
-.btn.whatsapp svg{flex:none}
-.btn.instagram{background:transparent;border:2px solid rgba(244,236,221,.5);color:var(--paper);font-size:15px;padding:14px 24px}
-.btn.instagram:hover{background:rgba(255,255,255,.08);border-color:var(--paper);transform:translateY(-2px)}
-.btn.instagram svg{flex:none}
+  <!-- Fonts: Space Grotesk, Inter, JetBrains Mono (Identical to founder.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:ital,wght@0,500;0,700;1,700;1,800&display=swap" rel="stylesheet">
 
-/* Nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.92);backdrop-filter:blur(12px);color:var(--ink);border-bottom:1px solid rgba(20,18,16,.08);width:100%}
-.nav .container{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
-.brand img{flex-shrink:0;border-radius:50%;display:block;transition:transform .25s ease}
-.brand:hover img{transform:rotate(8deg) scale(1.06)}
-.brand-name{font-family:'Alfa Slab One',serif;font-size:19px;letter-spacing:.01em;color:var(--ink);white-space:nowrap}
-.brand-name span{color:var(--amber-deep)}
-.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
-.nav ul a{text-decoration:none;color:var(--ink);opacity:.8}
-.nav ul a:hover{opacity:1;color:var(--amber-deep)}
-.nav-btn{flex-shrink:0}
-@media (max-width:860px){.nav ul{display:none}}
+  <style>
+    :root {
+      --bg-canvas: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #FAF9F6;
+      --ink: #141210;
+      --ink-secondary: #2C2925;
+      --ink-muted: #57524A;
+      --ink-faint: #8A8378;
+      --amber: #E58E1B;
+      --amber-dark: #C07412;
+      --amber-glow: rgba(229, 142, 27, 0.2);
+      --border-light: rgba(20, 18, 16, 0.08);
+      --border-subtle: rgba(20, 18, 16, 0.12);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 28px;
+      --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
 
-/* Hero */
-.hero{position:relative;color:var(--paper);background:
-  linear-gradient(90deg,rgba(20,18,16,.93) 0%,rgba(20,18,16,.72) 48%,rgba(20,18,16,.25) 100%),
-  url('assets/cafe-interior.jpg') center 40%/cover no-repeat,var(--ink);
-  min-height:min(86vh,820px);display:flex;align-items:center;overflow:hidden}
-.hero .container{padding:80px 0}
-.hero h1{font-size:clamp(38px,8vw,104px);max-width:11ch;margin:18px 0 22px}
-.hero h1 em{font-style:normal;color:var(--amber)}
-.hero .lead{max-width:48ch;margin-bottom:34px;font-size:clamp(16px,2vw,21px);color:rgba(244,236,221,.92)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
-.hero-qr-wrap{margin-top:22px}
-.hero-qr-badge{display:inline-flex;align-items:center;gap:16px;padding:12px 18px 12px 12px;background:rgba(20,18,16,.75);backdrop-filter:blur(14px);border:1px solid rgba(244,236,221,.25);border-radius:18px;color:#FAF7F2;text-decoration:none;transition:transform .2s ease,background .2s ease,border-color .2s ease;max-width:440px}
-.hero-qr-badge:hover{transform:translateY(-2px);background:rgba(20,18,16,.9);border-color:var(--amber)}
-.hero-qr-badge img{width:80px;height:98px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.2);flex-shrink:0;background:#fff}
-.hero-qr-info{display:flex;flex-direction:column;gap:4px}
-.hero-qr-tag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.hero-qr-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:#25D366}
-.hero-qr-title{font-size:15px;font-weight:700;line-height:1.2;color:#FAF7F2}
-.hero-qr-sub{font-size:13px;color:rgba(244,236,221,.75);line-height:1.3}
-.status{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(244,236,221,.35);border-radius:999px;padding:8px 16px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
-.status i{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(233,162,59,.25)}
-.render-note{position:absolute;left:20px;right:20px;bottom:14px;text-align:right;font-size:12px;opacity:.7;font-family:'Space Mono',monospace}
+    * {
+      box-sizing: border-box;
+    }
 
-.facts{background:var(--amber);color:var(--ink)}
-.facts .container{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.fact{padding:22px 26px;font-weight:700;display:flex;flex-direction:column;border-left:2px solid rgba(20,18,16,.18)}
-.fact:first-child{border-left:0}
-.fact b{font-family:'Alfa Slab One',serif;font-weight:400;font-size:26px;line-height:1.1}
-.fact span{font-size:14px;font-weight:500}
-@media (max-width:760px){
-  .facts .container{grid-template-columns:1fr}
-  .fact{border-left:0;border-top:1px solid rgba(20,18,16,.18);padding:14px 18px}
-  .fact:first-child{border-top:0}
-  .fact b{font-size:22px}
-  .fact span{font-size:13.5px}
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* USP */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-@media (max-width:900px){.split{grid-template-columns:1fr;gap:36px}}
-.figure{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px rgba(20,18,16,.18)}
-.figure img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;font-size:12px;font-family:'Space Mono',monospace;background:linear-gradient(transparent,rgba(20,18,16,.85));color:#FAF7F2}
-.usp-list{display:grid;gap:16px;margin-top:30px}
-.usp{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:18px 20px;background:#FFFFFF;border-radius:var(--radius);border:1px solid rgba(20,18,16,.08);box-shadow:0 6px 18px rgba(20,18,16,.03)}
-.usp .ico{width:48px;height:48px;border-radius:14px;background:var(--ink);display:grid;place-items:center}
-.usp h3{font-size:19px;margin-bottom:4px}
-.usp p{font-size:15.5px;color:var(--ink-soft)}
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-canvas);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-/* Pass */
-.pass-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:44px;align-items:start}
-@media (max-width:900px){.pass-grid{grid-template-columns:1fr}}
-.price-card{background:#FFFFFF;color:var(--ink);border:2px solid rgba(20,18,16,.1);border-radius:var(--radius);padding:34px;position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(20,18,16,.05)}
-.price-card .price{font-family:'Alfa Slab One',serif;font-size:clamp(56px,9vw,88px);line-height:1;color:var(--amber-deep);margin:10px 0 4px}
-.split-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;margin:22px 0 10px;background:rgba(20,18,16,.08)}
-.split-bar span:nth-child(1){width:49.5%;background:var(--ink)}
-.split-bar span:nth-child(2){width:50.5%;background:var(--amber)}
-.split-legend{display:flex;justify-content:space-between;gap:12px;font-size:14px;font-weight:700;color:var(--ink-soft)}
-.checks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px}
-.checks li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--ink)}
-.checks svg{flex:none;margin-top:4px}
-.monthly{margin-top:18px;border:2px dashed rgba(20,18,16,.25);border-radius:var(--radius);padding:22px 26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;background:#fff}
-.monthly b{font-family:'Alfa Slab One',serif;font-weight:400;font-size:26px}
-.fine{font-size:13.5px;color:var(--ink-soft);opacity:.85;margin-top:16px}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* Poll */
-.poll{display:grid;gap:14px;margin-top:38px}
-.zone{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:center;padding:20px 22px;border:2px solid rgba(20,18,16,.08);border-radius:var(--radius);background:#FFFFFF;box-shadow:0 4px 14px rgba(20,18,16,.03);transition:border-color .2s ease,box-shadow .2s ease}
-.zone:hover{border-color:rgba(20,18,16,.2);box-shadow:0 6px 20px rgba(20,18,16,.06)}
-.zone h3{font-size:19px;color:var(--ink)}
-.zone small{display:block;color:var(--ink-soft);font-size:14px;margin-top:2px}
-.bar{grid-column:1/-1;height:10px;background:rgba(20,18,16,.08);border-radius:999px;overflow:hidden}
-.bar span{display:block;height:100%;width:0;background:var(--amber);border-radius:999px;transition:width .6s ease}
-.zone.mine{border-color:var(--amber-deep);background:#FFFDF8}
-.votes{font-family:'Space Mono',monospace;font-size:13px;color:var(--ink-soft);font-weight:700}
+    a {
+      color: inherit;
+    }
 
-/* Forms & Inputs */
-form.card{background:#FFFFFF;border:1px solid rgba(20,18,16,.12);border-radius:var(--radius);padding:28px;display:grid;gap:18px;box-shadow:0 8px 24px rgba(20,18,16,.04)}
-label{font-weight:700;font-size:14px;display:block;margin-bottom:6px;color:var(--ink)}
-input[type=text],input[type=tel],select,textarea{width:100%;font:500 16px 'DM Sans',sans-serif;padding:13px 14px;border-radius:12px;border:2px solid rgba(20,18,16,.18);background:#fff;color:var(--ink);min-height:48px}
-textarea{resize:vertical;min-height:90px}
-input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,59,.55);border-color:var(--ink)}
-.err{color:#a3261a;font-size:13.5px;min-height:18px;margin-top:4px}
+    p {
+      margin: 0;
+    }
 
-/* Wall */
-.wall{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
-@media (max-width:860px){.wall{grid-template-columns:1fr}}
-.zone-col{border-radius:var(--radius);padding:24px;border:3px solid;background:#FFFFFF}
-.zone-col.red{border-color:var(--red)}
-.zone-col.green{border-color:var(--green)}
-.zone-col h3{display:flex;align-items:center;gap:10px;font-size:21px;margin-bottom:4px}
-.zone-col .dot{width:14px;height:14px;border-radius:50%}
-.red .dot{background:var(--red)}.green .dot{background:var(--green)}
+    :focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
 
-/* Mobile Responsive Adjustments */
-@media (max-width:640px){
-  .desktop-only{display:none!important}
-  .mobile-only{display:inline!important}
-  .container{width:min(100%,100% - 32px)}
-  .section{padding:54px 0}
-  h2{font-size:clamp(25px,6.5vw,34px)}
-  .lead{font-size:16px;line-height:1.55}
+    .container {
+      width: min(1180px, 100% - 48px);
+      margin-inline: auto;
+    }
 
-  /* Nav */
-  .nav .container{min-height:56px;gap:8px}
-  .brand{gap:8px}
-  .brand img{width:34px;height:34px}
-  .brand-name{font-size:16px}
-  .nav-btn{padding:8px 13px;font-size:13px;min-height:36px}
+    /* Typography & Hierarchy */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--ink);
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
 
-  /* Hero */
-  .hero{min-height:auto}
-  .hero .container{padding:38px 0 24px}
-  .status{font-size:11px;padding:6px 12px;letter-spacing:.1em}
-  .hero h1{font-size:clamp(32px,8.2vw,46px);margin:14px 0 16px}
-  .hero .lead{margin-bottom:22px;font-size:15.5px}
-  .hero-cta{flex-direction:column;width:100%;gap:10px}
-  .hero-cta .btn{width:100%;text-align:center;justify-content:center;padding:14px 18px;font-size:16px}
-  .hero-qr-wrap{margin-top:16px;width:100%}
-  .hero-qr-badge{width:100%;max-width:100%;padding:12px;gap:12px}
-  .hero-qr-badge img{width:64px;height:80px}
-  .hero-qr-title{font-size:14px}
-  .hero-qr-sub{font-size:12px}
-  .render-note{position:static;text-align:center;margin-top:18px;padding:0 8px;display:block;font-size:11px;line-height:1.4}
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber-dark);
+      margin-bottom: 10px;
+    }
 
-  /* USP */
-  .usp{padding:14px 16px;gap:12px}
-  .usp .ico{width:42px;height:42px;border-radius:12px}
-  .usp h3{font-size:17.5px}
-  .usp p{font-size:14.5px}
+    .section-title {
+      font-size: clamp(32px, 4.4vw, 50px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
 
-  /* Builder Pass */
-  .price-card{padding:22px 18px}
-  .price-card .price{font-size:54px}
-  .split-legend{font-size:12px}
-  .checks li{font-size:14.5px}
-  .monthly{padding:16px 18px;flex-direction:column;align-items:flex-start;gap:8px}
+    .section-lead {
+      font-size: clamp(16px, 1.3vw, 18px);
+      color: var(--ink-muted);
+      max-width: 58ch;
+      line-height: 1.65;
+    }
 
-  /* Poll */
-  .zone{padding:14px 16px;gap:6px 10px}
-  .zone h3{font-size:16.5px}
-  .zone small{font-size:13px}
-  .zone .btn{padding:9px 15px;font-size:13px;min-height:38px}
+    /* =====================================================================
+       NAVBAR (Original Logo, White Background — Matching founder.html)
+       ===================================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: var(--ink);
+      border-bottom: 1px solid var(--border-light);
+      width: 100%;
+    }
 
-  /* Footer */
-  footer{padding:48px 0 28px}
-  .foot{text-align:center;justify-items:center;gap:18px}
-  .foot img{width:110px;height:110px;margin:0 auto}
-  .foot h2{font-size:25px}
-  .foot p{margin:10px auto 0;font-size:14.5px}
-  .foot div > div{justify-content:center!important;width:100%;flex-direction:column;gap:10px}
-  .foot .btn{width:100%;max-width:320px;justify-content:center}
-  .copy{text-align:center;justify-content:center;flex-direction:column;gap:6px;margin-top:28px;font-size:12px}
-}
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 68px;
+    }
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-</style>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: block;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+    }
+
+    .brand:hover .brand-badge {
+      transform: rotate(8deg) scale(1.06);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .brand-name span {
+      color: var(--amber-dark);
+    }
+
+    .nav-links ul {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-muted);
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      color: #FFFFFF;
+      cursor: pointer;
+      text-decoration: none;
+      min-height: 44px;
+      white-space: nowrap;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--ink-secondary);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 13px 22px;
+      border-radius: 9999px;
+      cursor: pointer;
+      text-decoration: none;
+      min-height: 46px;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      border: 1.5px solid var(--ink);
+      color: #FFFFFF;
+    }
+
+    .btn-dark:hover {
+      background: var(--ink-secondary);
+      border-color: var(--ink-secondary);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: rgba(20, 18, 16, 0.05);
+      transform: translateY(-2px);
+    }
+
+    main {
+      flex: 1;
+      padding: 24px 0 72px;
+    }
+
+    /* =====================================================================
+       HERO CARD (Image as Background, Text Overlaid to Prevent Excessive Scroll)
+       ===================================================================== */
+    .hero-bg-card {
+      position: relative;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 32px;
+      background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.91) 48%, rgba(255, 255, 255, 0.78) 100%),
+        url('assets/cafe-interior.jpg') center 40% / cover no-repeat;
+      box-shadow: 0 16px 44px rgba(20, 18, 16, 0.05), 0 2px 6px rgba(20, 18, 16, 0.02);
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 2;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 780px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(20, 18, 16, 0.05);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 3px rgba(229, 142, 27, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 5.2vw, 68px);
+      font-weight: 800;
+      line-height: 1.04;
+      margin-bottom: 20px;
+    }
+
+    .amber-highlight {
+      font-style: italic;
+      color: var(--amber-dark);
+    }
+
+    .hero-lead {
+      font-size: clamp(16px, 1.35vw, 18px);
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      max-width: 54ch;
+      margin-bottom: 32px;
+      font-weight: 450;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-meta-badge {
+      position: absolute;
+      right: 24px;
+      bottom: 20px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-light);
+      pointer-events: none;
+    }
+
+    /* =====================================================================
+       FACTS / HIGHLIGHTS STRIP (Sleek Clean 3-Metric Card)
+       ===================================================================== */
+    .facts-section {
+      margin-bottom: 48px;
+    }
+
+    .facts-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      box-shadow: 0 8px 24px rgba(20, 18, 16, 0.03);
+    }
+
+    .fact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .fact-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber-dark);
+    }
+
+    .fact-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .fact-desc {
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+
+    .fact-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--border-light);
+    }
+
+    /* =====================================================================
+       USP SECTION (Whiteboard Image as Ambient Background, Text on Top)
+       ===================================================================== */
+    .section {
+      padding: 48px 0;
+    }
+
+    .usp-bg-card {
+      position: relative;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      padding: 48px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.92) 55%, rgba(255, 255, 255, 0.82) 100%),
+        url('assets/usp-whiteboard-table.jpg') center center / cover no-repeat;
+      box-shadow: 0 12px 36px rgba(20, 18, 16, 0.04);
+    }
+
+    .usp-header {
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .usp-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .usp-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 14px rgba(20, 18, 16, 0.02);
+      transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+    }
+
+    .usp-card:hover {
+      border-color: rgba(20, 18, 16, 0.25);
+      background: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .usp-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--ink);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .usp-name {
+      font-size: 17.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .usp-text {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* =====================================================================
+       BUILDER PASS SECTION (Chai Counter Image as Subtle Background Card)
+       ===================================================================== */
+    .pass-bg-card {
+      position: relative;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      padding: 48px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.93) 55%, rgba(255, 255, 255, 0.85) 100%),
+        url('assets/cafe-counter.jpg') center center / cover no-repeat;
+      box-shadow: 0 12px 36px rgba(20, 18, 16, 0.04);
+    }
+
+    .pass-header {
+      max-width: 680px;
+      margin-bottom: 32px;
+    }
+
+    .pass-content-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .price-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(20, 18, 16, 0.03);
+    }
+
+    .price-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber-dark);
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 7vw, 72px);
+      font-weight: 800;
+      line-height: 1.02;
+      color: var(--ink);
+      margin: 8px 0;
+      letter-spacing: -0.03em;
+    }
+
+    .price-subtitle {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+    }
+
+    .price-subtitle b {
+      color: var(--ink);
+    }
+
+    .split-bar-card {
+      margin: 22px 0 18px;
+    }
+
+    .split-bar {
+      display: flex;
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(20, 18, 16, 0.08);
+      margin-bottom: 8px;
+    }
+
+    .split-seat {
+      width: 49.5%;
+      background: var(--ink);
+    }
+
+    .split-food {
+      width: 50.5%;
+      background: var(--amber);
+    }
+
+    .split-legend {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .amber-text {
+      color: var(--amber-dark);
+    }
+
+    .pass-details-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(20, 18, 16, 0.03);
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      color: var(--ink-secondary);
+    }
+
+    .check-list svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .monthly-card {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .monthly-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--ink);
+    }
+
+    .monthly-sub {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .monthly-price {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--ink);
+    }
+
+    .fine-note {
+      font-size: 13px;
+      color: var(--ink-faint);
+      margin-top: 14px;
+    }
+
+    /* =====================================================================
+       FOUNDER TEASER (Editorial Banner Card)
+       ===================================================================== */
+    .founder-teaser-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    /* =====================================================================
+       POLL SECTIONS (Location & Pricing Check)
+       ===================================================================== */
+    .poll-block {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 38px 44px;
+      box-shadow: 0 10px 30px rgba(20, 18, 16, 0.03);
+      margin-bottom: 28px;
+    }
+
+    .poll {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .zone {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px 20px;
+      align-items: center;
+      padding: 18px 22px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(20, 18, 16, 0.02);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    }
+
+    .zone:hover {
+      border-color: rgba(20, 18, 16, 0.25);
+      box-shadow: 0 8px 24px rgba(20, 18, 16, 0.05);
+    }
+
+    .zone h3 {
+      font-family: var(--font-display);
+      font-size: 17.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .zone small {
+      display: block;
+      color: var(--ink-muted);
+      font-size: 13.5px;
+      margin-top: 3px;
+      font-family: var(--font-body);
+    }
+
+    .zone .btn.small {
+      padding: 9px 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #FFFFFF;
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-height: 40px;
+    }
+
+    .zone .btn.small:hover:not(:disabled) {
+      background: var(--ink-secondary);
+      transform: translateY(-1px);
+    }
+
+    .zone.mine {
+      border-color: var(--amber);
+      background: rgba(229, 142, 27, 0.04);
+    }
+
+    .zone.mine .btn.small {
+      background: var(--amber);
+      color: var(--ink);
+      border-color: var(--amber);
+      cursor: default;
+    }
+
+    .bar {
+      grid-column: 1 / -1;
+      height: 8px;
+      background: rgba(20, 18, 16, 0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--amber);
+      border-radius: 999px;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .votes {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+
+    /* =====================================================================
+       FOOTER (White Background, Original Logo, Same as Founder Page)
+       ===================================================================== */
+    footer {
+      background: #FFFFFF;
+      color: var(--ink);
+      padding: 56px 0 28px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
+    }
+
+    .foot {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .foot-badge {
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+
+    .foot h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+
+    .foot h2 span {
+      color: var(--amber-dark);
+    }
+
+    .foot p {
+      color: var(--ink-muted);
+      max-width: 54ch;
+      margin: 0 0 20px;
+      font-size: 15px;
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .foot-links a {
+      text-decoration: none;
+      color: var(--ink-muted);
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .foot-links a:hover {
+      color: var(--ink);
+    }
+
+    .foot-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid var(--border-light);
+      margin-top: 40px;
+      padding-top: 20px;
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-family: var(--font-mono);
+      text-align: center;
+    }
+
+    /* =====================================================================
+       RESPONSIVE ADJUSTMENTS
+       ===================================================================== */
+    .desktop-only {
+      display: inline;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .hero-layout {
+        padding: 44px 32px;
+      }
+
+      .usp-bg-card, .pass-bg-card {
+        padding: 36px 28px;
+      }
+
+      .usp-cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .pass-content-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .facts-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .fact-divider {
+        display: none;
+      }
+
+      .foot {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: inline !important;
+      }
+
+      .container {
+        width: min(100%, 100% - 32px);
+      }
+
+      main {
+        padding: 16px 0 48px;
+      }
+
+      .hero-bg-card {
+        border-radius: var(--radius-lg);
+      }
+
+      .hero-layout {
+        padding: 32px 20px;
+      }
+
+      .hero-title {
+        font-size: clamp(32px, 8.5vw, 44px);
+      }
+
+      .hero-lead {
+        font-size: 15.5px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        min-height: 48px;
+      }
+
+      .hero-meta-badge {
+        position: static;
+        margin-top: 24px;
+        align-self: flex-start;
+      }
+
+      .facts-card {
+        padding: 20px;
+      }
+
+      .usp-bg-card, .pass-bg-card {
+        padding: 28px 20px;
+        border-radius: var(--radius-lg);
+      }
+
+      .price-box, .pass-details-box {
+        padding: 24px 18px;
+      }
+
+      .founder-teaser-card {
+        padding: 28px 20px;
+      }
+
+      .poll-block {
+        padding: 28px 20px;
+      }
+
+      .zone {
+        padding: 16px 18px;
+      }
+
+      footer {
+        padding: 40px 0 24px;
+      }
+
+      .foot {
+        text-align: center;
+        justify-items: center;
+        gap: 20px;
+      }
+
+      .foot-badge {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+
+      .foot-links {
+        justify-content: center;
+      }
+
+      .foot-cta {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .foot-cta .btn {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
-<header class="nav">
-  <div class="container">
-    <a href="#top" class="brand" aria-label="Engineer Wala Cafe home">
-      <img src="assets/engineerwalacafe-badge-transparent.svg" alt="Engineer Wala Cafe logo" width="42" height="42">
-      <span class="brand-name">engineerwala<span>cafe</span></span>
-    </a>
-    <nav class="nav-links" aria-label="Main">
-      <ul>
-        <li><a href="#table">Whiteboard Tables</a></li>
-        <li><a href="#pass">Builder Pass</a></li>
-        <li><a href="#where">Kahan khule?</a></li>
-        <li><a href="founder.html">Founder</a></li>
-      </ul>
-    </nav>
-    <a class="btn small whatsapp nav-btn" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
-      <span class="desktop-only">☕ Community Join Karo</span>
-      <span class="mobile-only">☕ Join</span>
-    </a>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- ============ HERO ============ -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="container">
-    <span class="status"><i></i> Gorakhpur &middot; Coming soon</span>
-    <h1 id="hero-title">Chai peeyo.<br>Draw karo.<br><em>Build karo.</em></h1>
-    <p class="lead">Gorakhpur ka pehla cafe jahan har table ek whiteboard hai. Engineers, creators aur founders ke liye: kadak kulhad chai, fast WiFi aur aisi seat jahan 4 ghante baithna thakata nahi.</p>
-    <div class="hero-cta">
-      <a class="btn whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Community Join Karo
+  <!-- =====================================================================
+     NAVBAR (Original Logo, White Background)
+     ===================================================================== -->
+  <header class="nav">
+    <div class="container">
+      <a href="#top" class="brand" aria-label="engineerwalacafe.in home">
+        <img src="assets/engineerwalacafe-badge-transparent.svg" alt="Engineer Wala Cafe logo" width="42" height="42" class="brand-badge">
+        <span class="brand-name">engineerwala<span>cafe</span></span>
       </a>
-      <a class="btn instagram" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-        Instagram pe follow karo
-      </a>
-    </div>
 
-  </div>
-  <span class="render-note">Concept render (AI-generated). Final space alag ho sakta hai.</span>
-</section>
-
-<div class="facts" role="list">
-  <div class="container">
-    <div class="fact" role="listitem"><b>Whiteboard tables</b><span>6mm toughened glass, 100% erasable</span></div>
-    <div class="fact" role="listitem"><b>&#8377;99 Builder Pass</b><span>4 ghante + &#8377;50 ka food coupon</span></div>
-    <div class="fact" role="listitem"><b>Chai ke sath</b><span>banate hai sab</span></div>
-  </div>
-</div>
-
-<!-- ============ USP ============ -->
-<section class="section" id="table" aria-labelledby="usp-title">
-  <div class="container split">
-    <div>
-      <p class="eyebrow">Humari USP</p>
-      <h2 id="usp-title" style="margin:12px 0 18px">Table hi whiteboard hai.</h2>
-      <p class="lead">Idea aaya? Napkin dhoondhne ki zaroorat nahi. Seedha table par likho, mitao, dobara likho. Ek akela coder ho ya poori team, table aapka canvas hai.</p>
-      <div class="usp-list">
-        <div class="usp">
-          <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div><h3>6mm toughened glass top</h3><p>Garam chai ya scratches se kharab nahi hota. Marker se likho, ek swipe mein saaf.</p></div>
-        </div>
-        <div class="usp">
-          <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <div><h3>Tech Caddy, table ke beech mein</h3><p>Plug points, fast USB-C, markers, magnetic duster aur tissues. Socket dhoondhna band.</p></div>
-        </div>
-        <div class="usp">
-          <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5M2 18h20M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg></div>
-          <div><h3>Booth sofa + ergonomic chairs</h3><p>Padded seating, bag hooks aur footrest. Plan hai ki 4 ghante baithne ke baad bhi peeth na dukhe.</p></div>
-        </div>
-      </div>
-    </div>
-    <figure class="figure" style="margin:0">
-      <img src="assets/usp-whiteboard-table.jpg" alt="Engineers drawing architecture diagrams on glass-top whiteboard table in a cozy cafe with kulhad chai and markers" style="object-position:50% 50%" loading="lazy" width="1800" height="1350">
-      <figcaption>Whiteboard table in action</figcaption>
-    </figure>
-  </div>
-</section>
-
-
-
-<!-- ============ BUILDER PASS ============ -->
-<section class="section alt" id="pass" aria-labelledby="pass-title">
-  <div class="container">
-    <p class="eyebrow">Builder Pass</p>
-    <h2 id="pass-title" style="margin:12px 0 16px">&#8377;99 mein seat bhi, chai bhi.</h2>
-    <p class="lead">Sirf &#8377;20 ki chai lekar 3 ghante baithna humein aur aapko dono ko nahi jachta. Isliye access aur khana ek hi pass mein.</p>
-    <div class="pass-grid">
-      <div>
-        <div class="price-card">
-          <p class="eyebrow" style="color:var(--amber)">4 ghante &middot; 1 builder</p>
-          <div class="price">&#8377;99</div>
-          <p style="opacity:.85">Isme se <b>&#8377;50 ka food coupon</b> aapka: kulhad chai, sandwich ya Maggi, usi waqt redeem karo.</p>
-          <div class="split-bar" role="img" aria-label="99 rupees split: 49 rupees seat and 50 rupees food coupon"><span></span><span></span></div>
-          <div class="split-legend"><span>&#8377;49 Seat + WiFi + socket</span><span style="color:var(--amber)">&#8377;50 Food coupon</span></div>
-          <ul class="checks">
-            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> High-speed dual-fiber WiFi</li>
-            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> Apna dedicated socket</li>
-            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> Whiteboard table + markers + duster</li>
-            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9A23B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg> Comfortable seat, 4 ghante ke liye</li>
-          </ul>
-        </div>
-        <div class="monthly">
-          <div><b>Monthly Pass</b><div style="font-size:15px;opacity:.8">Fixed desk ya hot desk</div></div>
-          <div class="mono" style="font-weight:700;font-size:18px">&#8377;1,499 &ndash; &#8377;2,499 / month</div>
-        </div>
-        <p class="fine">Ye planned prices hain. Final rates opening par confirm honge.</p>
-      </div>
-      <figure class="figure" style="margin:0">
-        <img src="assets/cafe-counter.jpg" alt="Concept render: the chai counter with a neon cup-and-code sign, kulhad stacks, brass kettle and a chalkboard showing the Builder Day Pass" style="aspect-ratio:4/5;object-position:23% 50%" loading="lazy" width="1800" height="1005">
-        <figcaption>Chai Counter: yahin check-in, billing aur kitchen. Concept render (AI-generated).</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOUNDER TEASER ============ -->
-<section class="section alt" id="founder-teaser" aria-labelledby="founder-teaser-title">
-  <div class="container">
-    <p class="eyebrow">The person behind this</p>
-    <h2 id="founder-teaser-title" style="margin:12px 0 16px">Who is building this?</h2>
-    <p class="lead">Meet Mahendra Pratap, an engineering student from Gorakhpur, building the cafe he could not find.</p>
-    <a class="btn" href="founder.html" style="margin-top:28px" id="btn-meet-founder">
-      Meet the founder &nbsp;&rarr;
-    </a>
-  </div>
-</section>
-
-<!-- ============ WHERE ============ -->
-<section class="section" id="where" aria-labelledby="where-title">
-  <div class="container">
-    <p class="eyebrow">Aapki awaaz</p>
-    <h2 id="where-title" style="margin:12px 0 16px">Cafe Gorakhpur mein kahan khule?</h2>
-    <p class="lead">Ek vote do. Jahan sabse zyada builders chahenge, wahin pehle dhoondhenge.</p>
-    <div class="poll" id="poll" aria-live="polite"></div>
-    <p class="fine" id="pollNote"></p>
-
-    <hr style="border:0;border-top:1px solid rgba(20,18,16,.12);margin:56px 0 48px">
-
-    <p class="eyebrow">Pricing check</p>
-    <h2 id="pricing-title" style="margin:12px 0 16px">₹99 Builder Pass aapko sahi lagta hai?</h2>
-    <p class="lead">4 ghante + ₹50 food coupon ke liye ₹99. Aapka honest opinion chahiye taaki hum sahi rate rakh sakein.</p>
-    <div class="poll" id="pricePoll" aria-live="polite"></div>
-    <p class="fine" id="priceNote"></p>
-  </div>
-</section>
-
-<!-- ============ WALL (HIDDEN: spam/moderation + DB chahiye, cafe launch par wapas laana) ============ -->
-<!--
-<section class="section alt" id="wall" aria-labelledby="wall-title">
-  <div class="container">
-    <p class="eyebrow">Community Flashcard Wall</p>
-    <h2 id="wall-title" style="margin:12px 0 16px">Madad maango. Jo banaya, dikhao.</h2>
-    <p class="lead">Cafe ki brick wall par ek bada bulletin board hoga. Yahan uska online version hai.</p>
-    <div class="wall">
-      <div class="zone-col red">
-        <h3><span class="dot"></span> I need help with</h3>
-        <p style="font-size:15px;opacity:.75">Partner, developer ya editor chahiye? Card pin karo.</p>
-        <div class="notes" id="notesHelp" aria-live="polite">
-          <div class="note"><p>Flutter app ke liye ek UI designer chahiye.</p><small><span>Example card</span><span class="tag">Help</span></small></div>
-        </div>
-      </div>
-      <div class="zone-col green">
-        <h3><span class="dot"></span> Built here</h3>
-        <p style="font-size:15px;opacity:.75">Product, startup ya exam ki jeet. Yahan lagao.</p>
-        <div class="notes" id="notesBuilt" aria-live="polite">
-          <div class="note"><p>Pehla mini project deploy kiya.</p><small><span>Example card</span><span class="tag">Built</span></small></div>
-        </div>
-      </div>
-    </div>
-    <form class="card wall-form" id="wallForm" novalidate>
-      <div class="row">
-        <div>
-          <label for="wType">Card type</label>
-          <select id="wType"><option value="help">I need help with</option><option value="built">Built here</option></select>
-        </div>
-        <div>
-          <label for="wName">Aapka naam</label>
-          <input id="wName" type="text" maxlength="28" placeholder="e.g. Riya">
-        </div>
-      </div>
-      <div>
-        <label for="wText">Card ka message</label>
-        <textarea id="wText" maxlength="140" placeholder="Maximum 140 characters"></textarea>
-        <div class="err" id="eWall"></div>
-      </div>
-      <div><button class="btn" type="submit">Wall par lagao</button></div>
-    </form>
-  </div>
-</section>
--->
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="container">
-    <div class="foot">
-      <img src="assets/engineerwalacafe-badge-transparent.svg" alt="Engineer Wala Cafe badge" width="200" height="200" style="max-width:100%;border-radius:50%">
-      <div>
-        <h2>Chai ke sath <span>banate hai sab.</span></h2>
-        <p>Gorakhpur, Uttar Pradesh. Abhi hum validation stage mein hain: aapka vote humein sahi jagah chunne mein madad karta hai.</p>
-        <ul class="foot-links" style="display:flex;gap:16px;list-style:none;margin:0 0 20px;padding:0;flex-wrap:wrap">
-          <li><a href="index.html" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Home</a></li>
-          <li><a href="#table" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Whiteboard Tables</a></li>
-          <li><a href="#pass" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Builder Pass</a></li>
-          <li><a href="#where" style="text-decoration:none;color:rgba(244,236,221,.65);font-size:14px;font-weight:500">Vote</a></li>
+      <nav class="nav-links" aria-label="Main">
+        <ul>
+          <li><a href="#table">Whiteboard Tables</a></li>
+          <li><a href="#pass">Builder Pass</a></li>
+          <li><a href="#where">Kahan khule?</a></li>
+          <li><a href="founder.html">Founder</a></li>
         </ul>
-        <div class="foot-cta">
-          <a class="btn small whatsapp" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp Community Join Karo
-          </a>
-          <a class="btn small instagram" style="color:var(--ink);border-color:rgba(20,18,16,.25)" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-            Instagram
-          </a>
-          <a class="btn small" style="color:var(--ink);border-color:rgba(20,18,16,.25);background:transparent" href="mailto:engineerwalacafe@gmail.com">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            Email
+      </nav>
+
+      <a class="nav-btn" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
+        <span class="desktop-only">&#9749; Community Join Karo</span>
+        <span class="mobile-only">&#9749; Join</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+
+      <!-- =====================================================================
+         HERO SECTION (Image as Background, Text on Top to Prevent Excessive Scroll)
+         ===================================================================== -->
+      <section class="hero-bg-card" aria-labelledby="hero-title">
+        <div class="hero-layout">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Gorakhpur &middot; Coming soon</span>
+          </div>
+
+          <h1 id="hero-title" class="hero-title">
+            Chai peeyo.<br>
+            Draw karo.<br>
+            <span class="amber-highlight">Build karo.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Gorakhpur ka pehla cafe jahan har table ek whiteboard hai. Engineers, creators aur founders ke liye: kadak kulhad chai, fast WiFi aur aisi seat jahan 4 ghante baithna thakata nahi.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span>Community Join Karo</span>
+            </a>
+            <a class="btn btn-outline" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="16" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+              <span>Instagram pe follow karo</span>
+            </a>
+          </div>
+
+          <div class="hero-meta-badge">
+            Co-working &amp; Chai Space &middot; Gorakhpur
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         FACTS / HIGHLIGHTS STRIP
+         ===================================================================== -->
+      <section class="facts-section" aria-label="Key highlights">
+        <div class="facts-card">
+          <div class="fact-item">
+            <span class="fact-tag">USP 01</span>
+            <div class="fact-title">Whiteboard tables</div>
+            <div class="fact-desc">6mm toughened glass, 100% erasable</div>
+          </div>
+
+          <div class="fact-divider"></div>
+
+          <div class="fact-item">
+            <span class="fact-tag">USP 02</span>
+            <div class="fact-title">&#8377;99 Builder Pass</div>
+            <div class="fact-desc">4 ghante + &#8377;50 ka food coupon</div>
+          </div>
+
+          <div class="fact-divider"></div>
+
+          <div class="fact-item">
+            <span class="fact-tag">Community</span>
+            <div class="fact-title">Chai ke sath</div>
+            <div class="fact-desc">Banate hai sab</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         USP SECTION (Whiteboard Image as Ambient Background, Text on Top)
+         ===================================================================== -->
+      <section class="section" id="table" aria-labelledby="usp-title">
+        <div class="usp-bg-card">
+          <div class="usp-header">
+            <span class="eyebrow">Humari USP</span>
+            <h2 id="usp-title" class="section-title">Table hi whiteboard hai.</h2>
+            <p class="section-lead">
+              Idea aaya? Napkin dhoondhne ki zaroorat nahi. Seedha table par likho, mitao, dobara likho. Ek akela coder ho ya poori team, table aapka canvas hai.
+            </p>
+          </div>
+
+          <div class="usp-cards">
+            <div class="usp-card">
+              <div class="usp-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="12" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="usp-name">6mm toughened glass top</h3>
+                <p class="usp-text">Garam chai ya scratches se kharab nahi hota. Marker se likho, ek swipe mein saaf.</p>
+              </div>
+            </div>
+
+            <div class="usp-card">
+              <div class="usp-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2 4 14h7l-1 8 9-12h-7z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="usp-name">Tech Caddy, table ke beech mein</h3>
+                <p class="usp-text">Plug points, fast USB-C, markers, magnetic duster aur tissues. Socket dhoondhna band.</p>
+              </div>
+            </div>
+
+            <div class="usp-card">
+              <div class="usp-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 18v-5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5M2 18h20M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="usp-name">Booth sofa + ergonomic chairs</h3>
+                <p class="usp-text">Padded seating, bag hooks aur footrest. Plan hai ki 4 ghante baithne ke baad bhi peeth na dukhe.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         BUILDER PASS SECTION (Chai Counter as Ambient Background, Text on Top)
+         ===================================================================== -->
+      <section class="section" id="pass" aria-labelledby="pass-title">
+        <div class="pass-bg-card">
+          <div class="pass-header">
+            <span class="eyebrow">Builder Pass</span>
+            <h2 id="pass-title" class="section-title">&#8377;99 mein seat bhi, chai bhi.</h2>
+            <p class="section-lead">Sirf &#8377;20 ki chai lekar 3 ghante baithna humein aur aapko dono ko nahi jachta. Isliye access aur khana ek hi pass mein.</p>
+          </div>
+
+          <div class="pass-content-grid">
+            <div class="price-box">
+              <span class="price-badge">4 ghante &middot; 1 builder</span>
+              <div class="price-amount">&#8377;99</div>
+              <p class="price-subtitle">Isme se <b>&#8377;50 ka food coupon</b> aapka: kulhad chai, sandwich ya Maggi, usi waqt redeem karo.</p>
+
+              <div class="split-bar-card">
+                <div class="split-bar" role="img" aria-label="99 rupees split: 49 rupees seat and 50 rupees food coupon">
+                  <span class="split-seat"></span>
+                  <span class="split-food"></span>
+                </div>
+                <div class="split-legend">
+                  <span>&#8377;49 Seat + WiFi + socket</span>
+                  <span class="amber-text">&#8377;50 Food coupon</span>
+                </div>
+              </div>
+
+              <div class="monthly-card">
+                <div>
+                  <div class="monthly-title">Monthly Pass</div>
+                  <div class="monthly-sub">Fixed desk ya hot desk</div>
+                </div>
+                <div class="monthly-price">&#8377;1,499 &ndash; &#8377;2,499 / mo</div>
+              </div>
+              <p class="fine-note">Ye planned prices hain. Final rates opening par confirm honge.</p>
+            </div>
+
+            <div class="pass-details-box">
+              <ul class="check-list">
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                  <span>High-speed dual-fiber WiFi with backup</span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                  <span>Apna dedicated socket har table par</span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                  <span>Whiteboard table + markers + duster</span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E58E1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                  <span>Comfortable booth sofa &amp; ergonomic chairs</span>
+                </li>
+              </ul>
+
+              <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light)">
+                <a class="btn btn-dark" style="width: 100%" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
+                  Join Community &amp; Claim Pass &nbsp;&rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         FOUNDER TEASER
+         ===================================================================== -->
+      <section class="section" id="founder-teaser" aria-labelledby="founder-teaser-title">
+        <div class="founder-teaser-card">
+          <div>
+            <span class="eyebrow">The person behind this</span>
+            <h2 id="founder-teaser-title" style="font-size:clamp(28px, 3.6vw, 42px);margin-bottom:12px">Who is building this?</h2>
+            <p class="section-lead">Meet Mahendra Pratap, an engineering student from Gorakhpur, building the cafe he could not find.</p>
+          </div>
+          <a class="btn btn-dark" href="founder.html" id="btn-meet-founder">
+            Meet the founder &nbsp;&rarr;
           </a>
         </div>
+      </section>
+
+      <!-- =====================================================================
+         POLLS (Aapki Awaaz & Pricing Validation)
+         ===================================================================== -->
+      <section class="section" id="where" aria-labelledby="where-title">
+        <div class="poll-block">
+          <span class="eyebrow">Aapki awaaz</span>
+          <h2 id="where-title" class="section-title" style="margin-bottom:10px">Cafe Gorakhpur mein kahan khule?</h2>
+          <p class="section-lead">Ek vote do. Jahan sabse zyada builders chahenge, wahin pehle dhoondhenge.</p>
+          <div class="poll" id="poll" aria-live="polite"></div>
+          <p class="fine-note" id="pollNote"></p>
+        </div>
+
+        <div class="poll-block">
+          <span class="eyebrow">Pricing check</span>
+          <h2 id="pricing-title" class="section-title" style="margin-bottom:10px">&#8377;99 Builder Pass aapko sahi lagta hai?</h2>
+          <p class="section-lead">4 ghante + &#8377;50 food coupon ke liye &#8377;99. Aapka honest opinion chahiye taaki hum sahi rate rakh sakein.</p>
+          <div class="poll" id="pricePoll" aria-live="polite"></div>
+          <p class="fine-note" id="priceNote"></p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =====================================================================
+     FOOTER (White Background, Original Logo, Same as Founder Page)
+     ===================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <img src="assets/engineerwalacafe-badge-transparent.svg" alt="Engineer Wala Cafe badge" width="140" height="140" class="foot-badge">
+        <div>
+          <h2>Chai ke sath <span>banate hai sab.</span></h2>
+          <p>Gorakhpur, Uttar Pradesh. Abhi hum validation stage mein hain: aapka vote humein sahi jagah chunne mein madad karta hai.</p>
+
+          <ul class="foot-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#table">Whiteboard Tables</a></li>
+            <li><a href="#pass">Builder Pass</a></li>
+            <li><a href="#where">Vote</a></li>
+          </ul>
+
+          <div class="foot-cta">
+            <a class="btn btn-dark" href="https://chat.whatsapp.com/G0QFuuVkHvK2kMZ3ubMM8E" target="_blank" rel="noopener noreferrer">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span>WhatsApp Community Join Karo</span>
+            </a>
+            <a class="btn btn-outline" href="https://instagram.com/engineerwalacafe" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="16" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a class="btn btn-outline" href="mailto:engineerwalacafe@gmail.com">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <span>&copy; engineerwalacafe.in &middot; Made with &#10084;&#65039; in Gorakhpur</span>
       </div>
     </div>
-    <div class="copy" style="justify-content:center;text-align:center"><span>&copy; engineerwalacafe.in &middot; Made with ❤️ in Gorakhpur</span></div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Firebase SDK (modular, CDN) -->
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js';
-import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, serverTimestamp, collection, getDocs } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js';
+  <!-- Firebase SDK (modular, CDN) -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js';
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, serverTimestamp, collection, getDocs } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js';
 
-/* =====================================================================
-   FIREBASE CONFIG
-   ===================================================================== */
-const firebaseConfig = {
-  apiKey: "AIzaSyB7Ijbxb41XmvcZ2l7AqLuwyVz-e2bAYY0",
-  authDomain: "ewc-gorakhpur-cafe.firebaseapp.com",
-  projectId: "ewc-gorakhpur-cafe",
-  storageBucket: "ewc-gorakhpur-cafe.firebasestorage.app",
-  messagingSenderId: "596037618262",
-  appId: "1:596037618262:web:cc2342e9f6f89cdf0549f7"
-};
+    /* =====================================================================
+       FIREBASE CONFIG
+       ===================================================================== */
+    const firebaseConfig = {
+      apiKey: "AIzaSyB7Ijbxb41XmvcZ2l7AqLuwyVz-e2bAYY0",
+      authDomain: "ewc-gorakhpur-cafe.firebaseapp.com",
+      projectId: "ewc-gorakhpur-cafe",
+      storageBucket: "ewc-gorakhpur-cafe.firebasestorage.app",
+      messagingSenderId: "596037618262",
+      appId: "1:596037618262:web:cc2342e9f6f89cdf0549f7"
+    };
 
-const app = initializeApp(firebaseConfig);
-const db  = getFirestore(app);
-/* =====================================================================
-   DATA LAYER  — Firebase Firestore (LIVE MODE)
-   ---------------------------------------------------------------------
-   Architecture:
-   - /counters/{pollId}  → { zone1: N, zone2: N, … }  (atomic increments)
-   - /votes/{voterId}    → { poll, zone, ts }           (write-once per device)
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
 
-   voterId = stable fingerprint stored in localStorage so one browser
-   gets exactly one vote per poll. No auth required.
-   ===================================================================== */
-const DEMO_MODE = false;
+    const store = {
+      get(k, d){ try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch { return d; } },
+      set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+    };
 
-/* localStorage helper (used only for voterId + myVote cache) */
-const store = {
-  get(k, d){ try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch { return d; } },
-  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
-};
-
-/* Generate/retrieve a stable anonymous voter ID for this browser */
-function getVoterId() {
-  let id = store.get('ewc_voter_id', null);
-  if (!id) {
-    id = 'v_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 9);
-    store.set('ewc_voter_id', id);
-  }
-  return id;
-}
-
-/* ---- Poll Firestore helpers ---- */
-async function fsGetVotes(pollId) {
-  try {
-    const snap = await getDoc(doc(db, 'counters', pollId));
-    return snap.exists() ? snap.data() : {};
-  } catch(e) {
-    console.warn('Firestore read failed, using localStorage fallback', e);
-    return store.get(pollId + '_votes', {});
-  }
-}
-
-async function fsVote(pollId, zone) {
-  const voterId = getVoterId();
-  const voteDocId = pollId + '_' + voterId;
-  const voteRef    = doc(db, 'votes', voteDocId);
-  const counterRef = doc(db, 'counters', pollId);
-  try {
-    /* write-once: setDoc with merge:false will throw if doc exists */
-    await setDoc(voteRef, { poll: pollId, zone, ts: serverTimestamp() });
-    /* atomically increment the counter */
-    await updateDoc(counterRef, { [zone]: increment(1) }).catch(async () => {
-      /* counter doc may not exist yet — create it */
-      await setDoc(counterRef, { [zone]: 1 }, { merge: true });
-    });
-    store.set(pollId + '_my_vote', zone); /* cache locally */
-    return await fsGetVotes(pollId);
-  } catch(e) {
-    /* If vote doc already exists the write fails — user already voted */
-    console.warn('Vote failed (already voted or network issue)', e);
-    store.set(pollId + '_my_vote', zone);
-    const cached = store.get(pollId + '_votes', {});
-    cached[zone] = (cached[zone] || 0) + 1;
-    store.set(pollId + '_votes', cached);
-    return cached;
-  }
-}
-
-async function fsGetMyVote(pollId) {
-  /* Check localStorage cache first (avoids an extra Firestore read) */
-  const cached = store.get(pollId + '_my_vote', null);
-  if (cached) return cached;
-  try {
-    const voteDocId = pollId + '_' + getVoterId();
-    const snap = await getDoc(doc(db, 'votes', voteDocId));
-    if (snap.exists()) {
-      const zone = snap.data().zone;
-      store.set(pollId + '_my_vote', zone);
-      return zone;
+    function getVoterId() {
+      let id = store.get('ewc_voter_id', null);
+      if (!id) {
+        id = 'v_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 9);
+        store.set('ewc_voter_id', id);
+      }
+      return id;
     }
-  } catch(e) { /* network failure — treat as not voted */ }
-  return null;
-}
 
-/* Legacy api object (kept for wall code compatibility) */
-const api = {
-  async getVotes(){ return fsGetVotes('ewc'); },
-  async vote(zone){ return fsVote('ewc', zone); },
-  async getMyVote(){ return fsGetMyVote('ewc'); },
-  async getCards(){ return store.get('ewc_cards', []); },
-  async addCard(card){
-    const all = store.get('ewc_cards', []);
-    all.unshift({ ...card, at: Date.now() });
-    store.set('ewc_cards', all.slice(0, 40));
-    return all;
-  }
-};
-
-
-
-/* ============================== POLL (generic reusable) ============================== */
-/* Reusable poll renderer: supports multiple independent polls on the same page.
-   Each poll uses its own Firestore counter doc keyed by storePrefix.
-   Duplicate vote prevention: one Firestore document per (voterId + poll). */
-function createPoll({ containerId, noteId, zones, storePrefix }){
-  const box = document.getElementById(containerId);
-  const noteEl = document.getElementById(noteId);
-  if (!box) return;
-
-  const pollApi = {
-    async getVotes(){ return fsGetVotes(storePrefix); },
-    async vote(zone){ return fsVote(storePrefix, zone); },
-    async getMyVote(){ return fsGetMyVote(storePrefix); }
-  };
-
-  async function render(){
-    const [votes, mine] = await Promise.all([pollApi.getVotes(), pollApi.getMyVote()]);
-    const total = zones.reduce((s, z) => s + (votes[z.id] || 0), 0);
-    box.textContent = '';
-    zones.forEach(z => {
-      const n = votes[z.id] || 0, pct = total ? Math.round(n * 100 / total) : 0;
-      const row = document.createElement('div'); row.className = 'zone' + (mine === z.id ? ' mine' : '');
-      const left = document.createElement('div');
-      const h = document.createElement('h3'); h.textContent = z.name;
-      if (z.note) { const s = document.createElement('small'); s.textContent = z.note; left.append(h, s); }
-      else { left.append(h); }
-      const right = document.createElement('div'); right.style.textAlign = 'right';
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'btn small';
-      btn.textContent = mine === z.id ? 'Aapka vote ✓' : 'Vote do'; btn.disabled = !!mine;
-      btn.addEventListener('click', async () => { await pollApi.vote(z.id); render(); });
-      const v = document.createElement('div'); v.className = 'votes'; v.style.marginTop = '8px';
-      v.textContent = n + (n === 1 ? ' vote' : ' votes') + (total ? ' · ' + pct + '%' : '');
-      right.append(btn, v);
-      const bar = document.createElement('div'); bar.className = 'bar';
-      const fill = document.createElement('span'); bar.append(fill);
-      row.append(left, right, bar); box.append(row);
-      requestAnimationFrame(() => { fill.style.width = pct + '%'; });
-    });
-    if (noteEl) {
-      noteEl.textContent = total ? 'Total ' + total + (total === 1 ? ' vote' : ' votes') + '.' : 'Abhi tak koi vote nahi. Pehle aap bano!';
-
+    async function fsGetVotes(pollId) {
+      try {
+        const snap = await getDoc(doc(db, 'counters', pollId));
+        return snap.exists() ? snap.data() : {};
+      } catch(e) {
+        console.warn('Firestore read failed, using localStorage fallback', e);
+        return store.get(pollId + '_votes', {});
+      }
     }
-  }
-  render();
-}
 
-/* --- Location Poll --- */
-createPoll({
-  containerId: 'poll',
-  noteId: 'pollNote',
-  storePrefix: 'ewc',
-  zones: [
-    { id:'taramandal', name:'Taramandal / Medical College Road', note:'Coaching + hostels + young crowd' },
-    { id:'golghar',    name:'Golghar / Civil Lines',             note:'Central, professionals' },
-    { id:'mmmut',      name:'MMMUT ke aas-paas',                 note:'Engineering students, daily footfall' },
-    { id:'betiahata',  name:'Betiahata / Asuran Chowk',          note:'Beech mein, easy access' }
-  ]
-});
+    async function fsVote(pollId, zone) {
+      const voterId = getVoterId();
+      const voteDocId = pollId + '_' + voterId;
+      const voteRef    = doc(db, 'votes', voteDocId);
+      const counterRef = doc(db, 'counters', pollId);
+      try {
+        await setDoc(voteRef, { poll: pollId, zone, ts: serverTimestamp() });
+        await updateDoc(counterRef, { [zone]: increment(1) }).catch(async () => {
+          await setDoc(counterRef, { [zone]: 1 }, { merge: true });
+        });
+        store.set(pollId + '_my_vote', zone);
+        return await fsGetVotes(pollId);
+      } catch(e) {
+        console.warn('Vote failed (already voted or network issue)', e);
+        store.set(pollId + '_my_vote', zone);
+        const cached = store.get(pollId + '_votes', {});
+        cached[zone] = (cached[zone] || 0) + 1;
+        store.set(pollId + '_votes', cached);
+        return cached;
+      }
+    }
 
-/* --- Pricing Validation Poll --- */
-createPoll({
-  containerId: 'pricePoll',
-  noteId: 'priceNote',
-  storePrefix: 'ewc_price',
-  zones: [
-    { id:'haan',       name:'Haan, ₹99 sahi hai 👍' },
-    { id:'zyada',      name:'Thoda zyada hai 🤔' },
-    { id:'kam',        name:'Kam mein chahiye 💸' }
-  ]
-});
+    async function fsGetMyVote(pollId) {
+      const cached = store.get(pollId + '_my_vote', null);
+      if (cached) return cached;
+      try {
+        const voteDocId = pollId + '_' + getVoterId();
+        const snap = await getDoc(doc(db, 'votes', voteDocId));
+        if (snap.exists()) {
+          const zone = snap.data().zone;
+          store.set(pollId + '_my_vote', zone);
+          return zone;
+        }
+      } catch(e) {}
+      return null;
+    }
 
-/* ============================== WALL (HIDDEN — cafe launch par wapas laana) ============================== */
-/* Wall code commented out: spam/moderation + DB chahiye.
-   Uncomment when ready with moderation pipeline & database.
-(function(){
-  const help = document.getElementById('notesHelp'), built = document.getElementById('notesBuilt');
-  const exHelp = help.innerHTML, exBuilt = built.innerHTML;
-  function note(c){
-    const d = document.createElement('div'); d.className = 'note';
-    const p = document.createElement('p'); p.textContent = c.text;
-    const s = document.createElement('small');
-    const a = document.createElement('span'); a.textContent = c.name || 'Anonymous builder';
-    const t = document.createElement('span'); t.className = 'tag'; t.textContent = c.type === 'help' ? 'Help' : 'Built';
-    s.append(a, t); d.append(p, s); return d;
-  }
-  async function render(){
-    const cards = await api.getCards();
-    help.innerHTML = ''; built.innerHTML = '';
-    cards.filter(c => c.type === 'help').forEach(c => help.append(note(c)));
-    cards.filter(c => c.type === 'built').forEach(c => built.append(note(c)));
-    help.insertAdjacentHTML('beforeend', exHelp); built.insertAdjacentHTML('beforeend', exBuilt);
-  }
-  document.getElementById('wallForm').addEventListener('submit', async e => {
-    e.preventDefault();
-    const text = document.getElementById('wText').value.trim();
-    const err = document.getElementById('eWall');
-    if (text.length < 5){ err.textContent = 'Kam se kam 5 characters likho.'; return; }
-    err.textContent = '';
-    await api.addCard({ type: document.getElementById('wType').value, name: document.getElementById('wName').value.trim(), text });
-    document.getElementById('wText').value = ''; render();
-  });
-  render();
-})();
-*/
-</script>
+    function createPoll({ containerId, noteId, zones, storePrefix }){
+      const box = document.getElementById(containerId);
+      const noteEl = document.getElementById(noteId);
+      if (!box) return;
+
+      const pollApi = {
+        async getVotes(){ return fsGetVotes(storePrefix); },
+        async vote(zone){ return fsVote(storePrefix, zone); },
+        async getMyVote(){ return fsGetMyVote(storePrefix); }
+      };
+
+      async function render(){
+        const [votes, mine] = await Promise.all([pollApi.getVotes(), pollApi.getMyVote()]);
+        const total = zones.reduce((s, z) => s + (votes[z.id] || 0), 0);
+        box.textContent = '';
+        zones.forEach(z => {
+          const n = votes[z.id] || 0, pct = total ? Math.round(n * 100 / total) : 0;
+          const row = document.createElement('div'); row.className = 'zone' + (mine === z.id ? ' mine' : '');
+          const left = document.createElement('div');
+          const h = document.createElement('h3'); h.textContent = z.name;
+          if (z.note) { const s = document.createElement('small'); s.textContent = z.note; left.append(h, s); }
+          else { left.append(h); }
+          const right = document.createElement('div'); right.style.textAlign = 'right';
+          const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'btn small';
+          btn.textContent = mine === z.id ? 'Aapka vote ✓' : 'Vote do'; btn.disabled = !!mine;
+          btn.addEventListener('click', async () => { await pollApi.vote(z.id); render(); });
+          const v = document.createElement('div'); v.className = 'votes'; v.style.marginTop = '8px';
+          v.textContent = n + (n === 1 ? ' vote' : ' votes') + (total ? ' · ' + pct + '%' : '');
+          right.append(btn, v);
+          const bar = document.createElement('div'); bar.className = 'bar';
+          const fill = document.createElement('span'); bar.append(fill);
+          row.append(left, right, bar); box.append(row);
+          requestAnimationFrame(() => { fill.style.width = pct + '%'; });
+        });
+        if (noteEl) {
+          noteEl.textContent = total ? 'Total ' + total + (total === 1 ? ' vote' : ' votes') + '.' : 'Abhi tak koi vote nahi. Pehle aap bano!';
+        }
+      }
+      render();
+    }
+
+    /* --- Location Poll --- */
+    createPoll({
+      containerId: 'poll',
+      noteId: 'pollNote',
+      storePrefix: 'ewc',
+      zones: [
+        { id:'taramandal', name:'Taramandal / Medical College Road', note:'Coaching + hostels + young crowd' },
+        { id:'golghar',    name:'Golghar / Civil Lines',             note:'Central, professionals' },
+        { id:'mmmut',      name:'MMMUT ke aas-paas',                 note:'Engineering students, daily footfall' },
+        { id:'betiahata',  name:'Betiahata / Asuran Chowk',          note:'Beech mein, easy access' }
+      ]
+    });
+
+    /* --- Pricing Validation Poll --- */
+    createPoll({
+      containerId: 'pricePoll',
+      noteId: 'priceNote',
+      storePrefix: 'ewc_price',
+      zones: [
+        { id:'haan',       name:'Haan, ₹99 sahi hai 👍' },
+        { id:'zyada',      name:'Thoda zyada hai 🤔' },
+        { id:'kam',        name:'Kam mein chahiye 💸' }
+      ]
+    });
+  </script>
 </body>
 </html>
